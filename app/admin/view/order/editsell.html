@@ -1,0 +1,83 @@
+{extend name="iframe" /}
+
+{block name="body"}
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <form action="{:request()->url()}" method="post" class="xn_ajax" data-type="open">
+        <div class="layui-form-item">
+            <label class="layui-form-label">uid</label>
+            <div class="layui-input-inline">
+                <input type="text" name="uid" readonly="true" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.uid}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="order_number" lay-verify="required" placeholder="" Readonly="true" autocomplete="off" class="layui-input" value="{$order_data.order_number}">
+            </div>
+        </div>
+      
+        <div class="layui-form-item">
+            <label class="layui-form-label">USDT数量</label>
+            <div class="layui-input-inline">
+                <input type="text" name="usdt_nums" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.usdt_nums}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总金额</label>
+            <div class="layui-input-inline">
+                <input type="text" name="amount" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.amount}">
+            </div>
+        </div>
+       
+        <div class="layui-form-item">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="create_time" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.create_time|date='Y-m-d H:i:s'}">
+            </div>
+        </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">锁定</label>
+            <div class="layui-input-inline">
+           
+                 <input type="checkbox" lay-verify="required" lay-filter="locked" name="locked" data-id="{$order_data.id}" 
+                       lay-skin="switch" lay-text="锁定|正常" value="1" {if condition="$order_data['locked'] eq '1'"}checked{/if} >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态{$order_data['status']}</label>
+            <div class="layui-input-block">
+              
+<input type="radio" name="status" value="0" title="等待订单" {if condition="$order_data['status'] eq '0'"}checked{/if}>
+<input type="radio" name="status" value="1" title="匹配成功" {if condition="$order_data['status'] eq '1'"}checked{/if}>
+<input type="radio" name="status" value="2" title="订单完成" {if condition="$order_data['status'] eq '2'"}checked{/if} >
+<input type="radio" name="status" value="3" title="买家撤单" {if condition="$order_data['status'] eq '3'"}checked{/if} >
+<input type="radio" name="status" value="4" title="订单过期" {if condition="$order_data['status'] eq '4'"}checked{/if} >
+               
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" lay-submit class="layui-btn">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+    layui.form.on('switch(locked)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 2;
+        var id = $(this).attr('data-id');
+    
+        var url = "{:url('order/editsell')}";
+        $.post(url,{id:id,locked:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+    });
+   
+</script>
+{/block}

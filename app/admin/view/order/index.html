@@ -1,0 +1,83 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">订单设置</div>
+                <div class="layui-card-body" pad15="">
+                    <form action="{:request()->url()}" method="post" class="xn_ajax">
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">最小购买(usdt)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                    <input type="number" name="limit_buy" placeholder="请输入数字" value="{$data.limit_buy|default='0'}" class="layui-input">
+                                </div>
+                            </div>
+                           
+                      
+                          
+                          
+                            
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">最小卖出(usdt)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                        <input type="number" name="limit_sell" placeholder="请输入数字" value="{$data.limit_sell|default='0'}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                            
+                              <div class="layui-form-item">
+                                <label class="layui-form-label">买家加价(U)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                   
+                                       <input type="text"   name="buy_mark_up"  lay-verify="number" placeholder="请输入数字" value="{$data.buy_mark_up|default='0.00'}" class="layui-input">
+                                </div>
+                            </div>
+                           
+                             <div class="layui-form-item">
+                                <label class="layui-form-label">订单超时(分钟)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                   
+                                       <input type="number" name="timeout" placeholder="请输入数字" value="{$data.timeout|default='0'}" class="layui-input">
+                                </div>
+                            </div>
+                           
+                           
+                       
+                         
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="set_website">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+
+    layui.use(['form','jquery'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+   
+       form.verify({
+           number: [
+               /^(([^0][0-9]+|0)\.([0-9]{1,2}))$/
+               , '只能输入小数'
+           ]
+         });
+       
+        //点击勾选
+     
+    });
+</script>
+{/block}

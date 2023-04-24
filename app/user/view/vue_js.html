@@ -1,0 +1,1057 @@
+ <script>
+
+var app = new Vue({
+    el: '#app',
+   
+  data:{
+    
+      eye:false,
+   
+     balance:'{:session("show_balance")}'== '1' ? 1 : 0 ,
+     mesg:false,
+     oknotice:false,
+     box_right:false,
+     box_left:false,
+    notifications_right:true,
+    notifications_left:false,
+     hasread:'{$user_msg_nums}',//标记已读
+     disabled:true,
+     tel:'',
+     email:'',
+     show_tel:false,
+     show_mail:false,
+     code_1:'',
+     code_2:'',
+     code_3:'',
+     code_4:'',
+     code_5:'',
+     code_6:'',
+     currInput:0,
+     nextInput:0,
+     lastInput:0,
+     firstName:'',
+     middleName:'',
+     lastName:'',
+     know:true,
+     step:'{$step}',
+     sfzword:'{$tips}',
+     q_one:false,
+     q_two:false,
+     q_three:false,
+     q1_value:'您高中最好的朋友叫什么?',
+     q2_value:'您最喜欢的儿童读物是什么？',
+     q3_value:'您的第一份全职工作在哪个城市？',
+     answer_one:'{$user.a1}',
+     answer_two:'{$user.a2}',
+     answer_three:'{$user.a3}',
+     jishu:0,
+     imgUrl: '',
+      loading: false,
+      modalDialog:false,
+      googleShow:false,
+      as:'{$as}',//问答完成1未完成0 snsopen  active_sns(1)
+      snsopen:false,
+      snsopen2:false,
+      msg_login:'{$user.msg_login_status}'=='1'?true:false,
+      msg_get:'{$user.msg_get_status}'=='1'?true:false,
+      msg_send:'{$user.msg_send_status}'=='1'?true:false,
+      active_sns_open:'{$user.active_sns_open}'=='1'?true:false,
+      pwd:'',//当前密码
+      pwd1:'',
+      pwd2:'',
+      bank_selected:'{$bank.bank_number}'?false:true,//添加您的第一个银行账号
+      has_bank:'{$bank.bank_number}'?false:true,
+      showpwd:true,
+      showpwd1:true,
+      showpwd2:true,
+      bank_select:true,//下拉
+      currency:'{$bank.user_currency_code}'?'{$bank.user_currency_code}':'CNY',//cny，hkd，twd
+      currency_select:false,
+      areaobj:['大陆（中国）','香港（中国）','台湾（中国）'],
+      area:'{$bank.user_area_code}'?'{$bank.user_area_code}':'cn',//0大陆1香港2台湾
+      area_select:false,//下拉
+      bank_nature:0,//帐号类弄：0个人，1企业
+      checked1:true,
+      checked2:false,
+
+      cny:'元（人民币）',
+      hkd:'元（港币）',
+      twd:'元（台币）',
+      area_temp:'大陆（中国）',
+      currency_temp:'元（人民币）',
+      accountNumber:'',
+      holderName:'',
+      bankName:'',
+      tanchuang1:false,
+      tanchuang2:true,
+      id:'',
+      showedit:false,
+      show_wallet_add:false,
+      show_wallet_edit:false,
+      select_pay_wallet:false,
+      wallet_temp:'请挑选一个',
+      wallet_qr_code:'',
+      wallet_title:'',
+      wallet_account:'',
+      wllet_type:0,
+      qr_image:''
+  },
+  methods: {
+     
+      edit_wallet_close(){
+         var that = this; 
+         that.show_wallet_edit = !that.show_wallet_edit; 
+      },
+      edit_wallet_show(p){
+                 var that = this; 
+                 that.show_wallet_edit = !that.show_wallet_edit;
+         var wallets='{:json_encode($wallets)}';
+         var arrs = JSON.parse(wallets);
+         var newArr=[];
+         //console.log(arrs);
+         for (x in arrs)
+{
+  
+  if(arrs[x]['id'] == p){
+     newArr = arrs[x];
+    break;
+  }
+
+}
+console.log(newArr);
+if(newArr.subtype==0){
+  that.wallet_qr_code=newArr.wx_qrcode;
+  that.wallet_account=newArr.wx_account;
+  that.wallet_temp='微信支付';
+}else if(newArr.subtype==1){
+   that.wallet_qr_code=newArr.zfb_qrcode;
+  that.wallet_account=newArr.zfb_account;
+  that.wallet_temp='支付宝';  
+}else{
+   that.wallet_qr_code=newArr.decp_qrcode;
+  that.wallet_account=newArr.decp_account;
+  that.wallet_temp='数字人民币';   
+}
+that.qr_image =newArr.qr_image;
+
+      },
+      add_wallet_save(){
+          var that = this; 
+          this.$http({
+      method: 'post',
+      url: '/user/account/payment.html',
+      data: {
+        
+        type:'wallet',
+       
+       subtype:that.wllet_type,
+       title:that.wallet_title,
+       qrcode:that.wallet_qr_code,
+       account:that.wallet_account
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    
+    if(data.code==1){
+      layer.msg(data.msg);
+      console.log(data);
+    
+         window.location.reload();
+    }else{
+        console.log(data);
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  }); 
+      },
+      click_wallet(p){
+          var that = this; 
+          if(p==0){
+             that.wallet_temp='微信支付';
+              that.wllet_type=0;
+          }
+          if(p==1){
+             that.wallet_temp='支付宝';
+             that.wllet_type=1;
+          }
+          if(p==2){
+             that.wallet_temp='数字人民币';
+             that.wllet_type=2;
+          }
+          console.log(p)
+      },
+      select_wallet_pay(){
+          var that = this; 
+          that.select_pay_wallet = !that.select_pay_wallet; 
+      },
+       show_add_wallet(){
+          var that = this; 
+          that.show_wallet_add = !that.show_wallet_add; 
+          console.log('show_wallet_add',that.show_wallet_add)
+      },
+      show_wallet(p){
+          var that = this; 
+          that.showedit =p;
+         // that.showedit = !that.showedit; 
+          console.log('showedit',that.showedit)
+      },
+      close_wallet(p){
+          var that = this; 
+          that.showedit ='';
+         // that.showedit = !that.showedit; 
+          console.log('showedit',that.showedit)
+      },
+      edit_bank(p){
+         var that = this; 
+         var bankCard='{:json_encode($payments)}';
+         var arrs = JSON.parse(bankCard);
+         var newArr=[];
+         console.log(arrs);
+         for (x in arrs)
+{
+  
+  if(arrs[x]['id'] == p){
+     newArr = arrs[x];
+    break;
+  }
+
+}
+
+  that.bank_nature =newArr['bank_nature'];
+  that.area_temp =newArr['user_area'];
+  that.area =newArr['user_area_code'];
+  that.currency_temp =newArr['user_currency'];
+  that.currency =newArr['user_currency_code'];
+  that.accountNumber =newArr['bank_number'];
+  that.bankName =newArr['bank_name'];
+  that.holderName = newArr['holder_name'];
+  that.id = p;
+ 
+ that.tanchuang1=true;
+ that.tanchuang2=false;
+      },
+      del_bank(p){
+          var that = this; 
+           this.$http({
+      method: 'post',
+      url: '/user/account/payment.html',
+      data: {
+        
+        id:p,
+       
+       type:'del_bank'
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    
+    if(data.code==1){
+      layer.msg(data.msg);
+      console.log(data);
+    
+         window.location.reload();
+    }else{
+        console.log(data);
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      },
+      save_account(p){
+          console.log('id',p);
+          var that = this; 
+           this.$http({
+      method: 'post',
+      url: '/user/account/payment.html',
+      data: {
+        bank_nature: that.bank_nature,
+        id:p,
+        user_area: that.area_temp,
+        user_area_code: that.area,
+        user_currency: that.currency_temp,
+        user_currency_code: that.currency,
+        bank_number: that.accountNumber,
+        holder_name: that.holderName,
+       bank_name: that.bankName,
+       type:'bank'
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    
+    if(data.code==1){
+      layer.msg(data.msg);
+      console.log(data);
+      that.accountNumber='';
+      that.currency_temp='';
+      that.bankName='';
+         window.location.reload();
+    }else{
+        console.log(data);
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      },
+      tianjia(p){
+         var that = this; 
+         that.id =0;
+         that.tanchuang1=!that.tanchuang1;
+      },
+      next_tianjia(p){
+         var that = this;  
+         
+         that.tanchuang2=!that.tanchuang2;
+      },
+      nextbutton(){
+           var that = this; 
+          that.bank_selected=false;
+      },//下一步
+      return_button(){
+          var that = this; 
+          that.bank_selected=true; 
+      },
+      add_bank_no(){
+       var that = this;  
+       console.log(that.currency_temp);
+       this.$http({
+      method: 'post',
+      url: '/user/account/payment.html',
+      data: {
+        bank_nature: that.bank_nature,
+        
+        user_area: that.area_temp,
+        user_area_code: that.area,
+        user_currency: that.currency_temp,
+        user_currency_code: that.currency,
+        bank_number: that.accountNumber,
+        holder_name: that.holderName,
+       bank_name: that.bankName,
+       type:'bank'
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    
+    if(data.code==1){
+      layer.msg(data.msg);
+      console.log(data);
+    
+         window.location.reload();
+    }else{
+        console.log(data);
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      },
+      area_click(p){
+         var that = this;  
+         if(p==0){
+            
+           // that.area_temp = that.mainland;
+              that.area_temp = that.areaobj[p];
+              that.area='cn';
+         }
+         if(p==1){
+           // that.area_temp = that.hk;
+            that.area='hk';
+              that.area_temp = that.areaobj[p];
+         }
+          if(p==2){
+                that.area_temp = that.areaobj[p];
+                that.area='tw';
+           // that.area_temp = that.tw;
+         }
+       
+         console.log('数组打印',that.areaobj[p]);
+        
+         that.area_select_act();
+      },
+      currency_click(p){
+         var that = this;  
+         if(p==0){
+             that.currency='CNY';
+            that.currency_temp = that.cny;
+         }
+         if(p==1){
+             that.currency='HKD';
+            that.currency_temp = that.hkd;
+         }
+          if(p==2){
+              that.currency='TWD';
+            that.currency_temp = that.twd;
+         }
+         that.currency_select_act();
+      },
+      bank_nature_check(p){
+           var that = this; 
+           that.bank_nature=p;
+           if(p==0){
+            that.checked1=true; 
+            that.checked2=false;
+           }else{
+             that.checked2=true; 
+            that.checked1=false;  
+           }
+           console.log('bank_nature',that.bank_nature)
+           
+      },
+      clearSession(uid){
+          var that = this; 
+          let _uid = uid;
+          console.log(_uid);
+         layer.msg('清除成功');  
+      },
+      modify_pwd(){
+          var that = this; 
+           that.$http({
+      method: 'post',
+      url: '/user/account/modifypwd',
+      data: {
+     p1:that.pwd,
+       p2:that.pwd1,
+       p3:that.pwd2, 
+        
+       
+      }
+   }).then(function (response) {
+   
+    var data =response.data;
+        console.log(response);
+    if(data.code==1){
+      layer.msg(data.msg);
+     
+        window.location.href="{:url('/user/login/logout')}"
+         //window.location.reload();
+    }else{
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      },
+      showpassword(p){
+          var that = this; 
+         
+         if(p==1){
+            that.showpwd=!that.showpwd; 
+             console.log('p',p);
+         } 
+         if(p==2){
+            that.showpwd1=!that.showpwd1;  
+             console.log('p',p);
+         } 
+         if(p==3){
+            that.showpwd2=!that.showpwd2;  
+             console.log('p',p);
+         } 
+      },
+      even_pwd(){
+           var that = this; 
+           if(that.pwd!='' && that.pwd1!='' && that.pwd2!=''){
+               that.disabled=false; 
+           }
+         
+      },
+      open_sns(n){
+           var that = this;  
+         if(n==1){
+             that.msg_login =  !that.msg_login;
+             console.log(that.msg_login);
+             var res= that.msg_login ? '1':'0';
+             that.sns_post('msg_login_status',res);
+         }
+         if(n==2){
+             that.msg_send =  !that.msg_send;
+             var res= that.msg_send ? '1':'0';
+             that.sns_post('msg_send_status',res);
+         }
+         if(n==3){
+             that.msg_get =  !that.msg_get;
+             var res= that.msg_get ? '1':'0';
+             that.sns_post('msg_get_status',res);
+         }
+      },
+      
+        sns_post(type,pram){
+           this.$http({
+      method: 'post',
+      url: '/user/account/snsapi',
+      data: {
+     type:type,
+        status: pram,
+        
+        
+       
+      }
+   }).then(function (response) {
+   
+    var data =response.data;
+        console.log(response);
+    if(data.code==1){
+   
+    }else{
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
+      },
+      active_sns(cansu){
+          var that = this;  
+          var p = cansu;
+          console.log(p);
+          that.active_sns_open = !that.active_sns_open;
+          if(p==1 ){
+            that.snsopen= !that.snsopen;  
+          }else if(p==2){
+               that.active_sns_open = !that.active_sns_open;
+              that.snsopen= !that.snsopen;  
+            that.snsopen2= !that.snsopen2;   
+          }
+           
+      },
+      closeDialog(){
+           var that = this;  
+         that.modalDialog = false;  
+         console.log('closeDialog');
+      },
+      active_google(){
+          
+         var that = this;  
+         that.snsopen=false;
+         that.snsopen2=false;
+         if(that.as == '0'){
+             that.modalDialog = !that.modalDialog;  
+         }else{
+            that.googleShow = !that.googleShow;  
+         }
+         
+      },
+      Submit_question() {
+           var that = this; 
+           this.$http({
+      method: 'post',
+      url: '/user/account/questions',
+      data: {
+        q1: that.q1_value,
+        q2: that.q2_value,
+        q3: that.q3_value,
+        a1: that.answer_one,
+        a2: that.answer_two,
+       a3: that.answer_three,
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    
+    if(data.code==1){
+      layer.msg(data.msg);
+     
+    
+         window.location.reload();
+    }else{
+        layer.msg(data.msg);
+    }
+    
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
+  
+     
+    }
+  ,
+  
+   area_select_act(){
+          var that = this; 
+       
+          that.area_select = !that.area_select;
+         
+      },
+      currency_select_act(){
+          var that = this; 
+       
+          that.currency_select = !that.currency_select;
+         
+      },
+      questions_1(){
+          var that = this; 
+       
+          that.q_one = !that.q_one;
+         
+      },
+      questions_2(){
+          var that = this; 
+          that.q_two = !that.q_two;
+      },
+      questions_3(){
+          var that = this; 
+          that.q_three = !that.q_three;
+      },
+      sendMood(){
+      var that = this; 
+       var uImg = document.getElementById('fileUpload').files;  //获取图片
+
+        //图片上传
+        var formdata = new FormData(); //创建图片上传对象
+        formdata.append("uType",'user_ident');   //添加文字
+        if(that.step==1){
+            formdata.append("sfz_type",'front');   //添加文字
+        }else{
+            
+            formdata.append("sfz_type",'back');   //添加文字
+        }
+        formdata.append("step",that.step);   //添加文字
+        formdata.append("uImg",uImg[0]); //添加图片
+        //执行上传
+        var imgurl="{:url('user/upload/upload')}";
+      
+        axios.post(imgurl,formdata).then(res=>{
+          console.log(res)
+          if(res.data.code==1){
+              
+              that.step++;
+              that.sfzword='上传身份证背面';
+            window.location.reload();
+          }
+           if(res.data.code==0){
+               console.log(res);
+              that.step=4;
+              that.sfzword='请重新上传';
+              
+          }
+        })
+       } ,
+      /*重新上传改成确认保存*/
+    reupload(){
+       var that = this;  
+       /*window.location.href="{:url('user/verification/index')}";*/
+        console.log('reupload');
+       this.$http({
+      method: 'post',
+      url: '/user/verification/reupload',
+      data: {
+        reupload: 1,
+      
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      
+      console.log(data);
+    
+         window.location.reload();
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    },
+      nextFocus(el,index) { 
+           var that = this; 
+          dom = document.getElementsByClassName("min-width-0");
+         // console.log(dom);
+          that.curInput = dom[index]; 
+          console.log('curInput');
+         // console.log(index);
+          that.nextInput = dom[index + 1]; 
+          
+                    that.lastInput = dom[index - 1];
+          console.log(that.nextInput);
+          /*这里的keyCode 根据不同的平台或许不同,安卓就是不是8*/
+                if (1 != 8) {
+                    if (index < 6) {
+                        that.nextInput.focus();
+                    } else {
+                        that.currInput.blur();
+                    }
+                }else{
+                    if (index !=0) {
+                        that.lastInput.focus();
+                    }
+ }},
+      tel_even(){
+         var that = this; 
+          that.disabled=false;
+      },
+      first_even(){
+         var that = this; 
+          that.disabled=false;
+      },
+      Iknowed(){
+          var that = this;  
+          that.know=!that.know;
+      },
+        email_even(){
+         var that = this; 
+          that.disabled=false;
+      },
+        shownotifications_right() {
+            var that = this;
+
+            that.notifications_right = true;
+            that.notifications_left = false;
+          },
+          shownotifications_left() {
+            var that = this;
+
+            that.notifications_right = false;
+            that.notifications_left = true;
+          },
+      is_readed(){
+           console.log('is_readed');
+           
+     var that=this;
+     that.hasread=0;
+    this.$http({
+      method: 'post',
+      url: '/user/index/readed',
+      data: {
+        readed: 1,
+       
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+        that.tips=data.msg;
+      
+        
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+},
+
+sendsms(){
+     var that=this;
+     this.$http({
+      method: 'post',
+      url: '/user/verification/phone',
+      data: {
+        tel: that.tel,
+       
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      that.show_tel=true;
+       layer.msg(data.msg);
+        
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+},
+
+sendmail(){
+     var that=this;
+     this.$http({
+      method: 'post',
+      url: '/user/verification/email',
+      data: {
+        email: that.email,
+       
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      that.show_mail=true;
+       layer.msg(data.msg);
+        
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+},
+
+code_check(){
+  var that = this;  
+
+  
+ if(that.code_1 !== "" && that.code_3 !== "" && that.code_4 !== "" && that.code_5 !== "" && that.code_6 !== ""){
+     
+      this.$http({
+      method: 'post',
+      url: '/user/verification/check',
+      data: {
+        code_1: that.code_1,
+        code_2: that.code_2,
+         code_3: that.code_3,
+        code_4: that.code_4,
+         code_5: that.code_5,
+          code_6: that.code_6,
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+     
+       layer.msg(data.msg);
+       window.location.href =  "{:url('user/verification/index')}";
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      
+　　}   
+    
+},
+
+google_code_check(){
+  var that = this;  
+  var googlestatus='{$user.google_key_status}';
+  console.log('googlestatus',googlestatus);
+  if(googlestatus == '1'){
+      console.log(googlestatus);
+      
+      googlestatus='0';
+  }else{
+     googlestatus='1';  
+  }
+ // console.log('code1');
+ if(that.code_1 !== "" && that.code_3 !== "" && that.code_4 !== "" && that.code_5 !== "" && that.code_6 !== ""){
+     
+      this.$http({
+      method: 'post',
+      url: '/user/account/google_check_code',
+      data: {
+        code_1: that.code_1,
+        code_2: that.code_2,
+         code_3: that.code_3,
+        code_4: that.code_4,
+         code_5: that.code_5,
+          code_6: that.code_6,
+          status:googlestatus
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+     
+       layer.msg(data.msg);
+     
+        window.location.reload();
+    }else{
+       console.log(data); 
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      
+　　}   
+    
+},
+
+code_mailcheck(){
+  var that = this;  
+
+  
+ if(that.code_1 !== "" && that.code_3 !== "" && that.code_4 !== "" && that.code_5 !== "" && that.code_6 !== ""){
+     
+      this.$http({
+      method: 'post',
+      url: '/user/verification/checkmail',
+      data: {
+        code_1: that.code_1,
+        code_2: that.code_2,
+         code_3: that.code_3,
+        code_4: that.code_4,
+         code_5: that.code_5,
+          code_6: that.code_6,
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+     
+       layer.msg(data.msg);
+       window.location.href =  "{:url('user/verification/index')}";
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      
+　　}   
+    
+},
+      showbox_right(){
+       var that=this;
+      
+          that.box_right=true; 
+     that.box_left=false; 
+    },
+     showbox_left(){
+       var that=this;
+      
+          that.box_right=false; 
+     that.box_left=true; 
+    },
+    showdropdown(){
+       var that=this;
+       console.log(that.eye);
+       if(that.eye){
+         that.eye=false; 
+        
+       }else{
+         that.eye=true; 
+           
+       }
+    },
+    showmsg(){
+      var that=this; 
+      that.box_right=true; 
+      if(that.mesg){
+         that.mesg=false; 
+        console.log(that.mesg);
+       }else{
+         that.mesg=true; 
+          console.log(that.mesg); 
+       }
+    },
+    identification(){
+       var that=this;  
+       
+        
+        this.$http({
+      method: 'post',
+      url: '/user/verification/identification',
+      data: {
+        firstName: that.firstName,
+        middleName:that.middleName,
+        lastName:that.lastName
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      
+      console.log(data);
+         window.location.href =  "{:url('user/verification/upload')}";
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    },
+      tz(){
+      var that=this;  
+       
+      if(that.oknotice){
+         that.oknotice=false; 
+        console.log(that.oknotice);
+       }else{
+         that.oknotice=true; 
+          console.log('oknotice'); 
+       }
+       
+        this.$http({
+      method: 'post',
+      url: '/user/index/readed',
+      data: {
+        readed: 1,
+        uptime:'{$notice.create_time}'
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      
+      console.log(data);
+        
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    },
+    showbalance(){
+      var that=this;
+       console.log(that.balance);
+       if(that.balance){
+         that.balance=0; 
+        
+       }else{
+         that.balance=1; 
+           
+       }   
+         this.$http({
+      method: 'post',
+      url: '/user/index/showbalance',
+      data: {
+        show_balance:that.balance,
+       
+        
+       
+      }
+   }) .then(function (response) {
+   
+    var data =response.data;
+    console.log(data);
+    if(data.code==1){
+      
+      console.log(data);
+        
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  }); 
+    }
+     
+  },
+   
+  
+});
+</script>

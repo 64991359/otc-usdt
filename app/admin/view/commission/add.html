@@ -1,0 +1,72 @@
+{extend name="main" /}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <form class="layui-form" action="" lay-filter="component-form-element">
+                     
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分佣(%)：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="commission_rate" lay-verify="required" placeholder="请输入佣金" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <label class="layui-form-label">商户码：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="pid" lay-verify="required" placeholder="商户id" autocomplete="off" class="layui-input"  readonly="true"  value="{$pid}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="component-form-element">提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+
+<script>
+    layui.config({
+        base: '/static/layui/lay/modules/' //静态资源所在路径
+    }).use(['form'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,form = layui.form;
+
+        form.on('submit(component-form-element)', function(data){
+
+            $.post("{:url('commission/addcommission')}", data.field, function (res) {
+                    console.log(res);
+                if(0 == res.code) {
+
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        window.parent.renderTable();
+                    }, 200);
+                } else {
+
+                    layer.alert(res.msg, {
+                        'title': '添加出错',
+                        'icon': 2
+                    });
+                }
+            }, 'json');
+            return false;
+        });
+    });
+</script>
+{/block}

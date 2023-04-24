@@ -1,0 +1,166 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class=" layui-card-header layuiadmin-card-header-auto">
+            <form class="layui-form" method="get">
+                <input type="hidden" name="bcid" value="{:input('bcid')}"><!--保留当前位置的bcid参数-->
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="start_date" id="start_date" value="{:input('start_date')}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">截止日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="end_date" id="end_date" value="{:input('end_date')}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                   	<div class="layui-inline">
+                				<label class="layui-form-label">状态</label>
+                				<div class="layui-input-inline" style="width:100px;">
+                					<select name="status" id="status">	
+                						<option value="">全部</option>
+                						<option value="0">等待执行</option>
+                						<option value="1">执行中</option>
+                						<option value="2">执行成功</option>
+                						<option value="3">执行出错</option>
+                					
+                					</select>
+                				</div>
+                			</div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                  
+                </div>
+            </form>
+            <div class="forwardTable farTable">
+							<table class="layui-hide" id="test" lay-filter="test"></table> <script type="text/html" id="table-sell-admin">
+               
+                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+						</div>
+						
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <tr>
+                    <th><b>ID</b></th>
+                    <th><b>开始时间</b></th>
+                    <th><b>内容</b></th>
+                    <th><b>金额</b></th>
+                    <th><b>状态</b></th>
+                    <th><b>创建时间</b></th>
+                
+                    <th><b>操作</b></th>
+                </tr>
+
+                <tbody>
+                {foreach name="list" item="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                     <td class="layui-form">{$vo.run_time}</td>
+                    <td>{$vo.contents}</td>
+                  <td>{$vo.amount}</td>
+               <td>{$vo['status']|raw}</td>
+            
+               <td>{$vo.create_time}</td>
+                 
+                <td class="layui-form">
+                {if condition="$vo['id'] neq 1"}
+                <a href="{:Url('delete',array('id'=>$vo['id']))}" title="确认要删除任务id【{$vo.id}】吗？" class="layui-btn layui-btn-danger layui-btn-xs xn_delete">
+                    <i class="layui-icon layui-icon-delete"></i>删除
+                </a>
+                {/if}
+            </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="pages">{$list|raw}</div>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+    layui.use(['table','form','laydate'], function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start_date'
+        });
+        laydate.render({
+            elem: '#end_date'
+        });
+    });
+    
+    	// 回车亦可以搜索
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#search_btn").trigger("click");
+        }
+    });
+    //用body触发搜索条件可以避免搜索一次后，再点击搜索失效
+    $('body').on('click','#searchBtn',function(){
+		table.reload('test', {
+			method : 'post',
+			where : {
+		
+			
+				status:$('#status').val(),
+			 
+				start_date:$('#start_date').val(),
+				end_date:$('#end_date').val(),
+			},
+			page : {
+				curr : 1
+			},
+			done:function (res) {
+                //执行一个laydate实例
+                  layer.msg(res.msg, data.othis);
+                laydate.render({
+                    elem: 'start_date' //指定元素  
+                });
+            }
+ 
+		});
+		return false;
+	});
+</script>
+<script>
+    layui.form.on('switch(verification_status)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        var id = $(this).attr('data-id');
+      
+        var url = "{:url('guiji/index')}";
+        $.post(url,{id:id,status:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+    });
+  
+    
+   
+           layui.form.on('switch(status)', function(data){
+        layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        console.log(val)
+        var id = $(this).attr('data-id');
+       
+        var url = "{:url('guiji/index')}";
+        $.post(url,{id:id,status:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')   });  
+</script>
+{/block}

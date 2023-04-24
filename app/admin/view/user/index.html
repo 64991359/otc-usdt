@@ -1,0 +1,170 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class=" layui-card-header layuiadmin-card-header-auto">
+            <form class="layui-form" method="get">
+                <input type="hidden" name="bcid" value="{:input('bcid')}"><!--保留当前位置的bcid参数-->
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="start_date" id="start_date" value="{:input('start_date')}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">截止日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="end_date" id="end_date" value="{:input('end_date')}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                				<label class="layui-form-label">手机</label>
+                				<div class="layui-input-inline" style="width:120px;">
+                					<input type="text"  id='phone' name="phone"  value="" placeholder="手机号"  autocomplete="off" class="layui-input">
+                				</div>
+                			</div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                  
+                </div>
+            </form>
+            <div class="forwardTable farTable">
+							<table class="layui-hide" id="test" lay-filter="test"></table> <script type="text/html" id="table-sell-admin">
+               
+                <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+						</div>
+						
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <tr>
+                    <th><b>ID</b></th>
+                    <th><b>用户名</b></th>
+                    <th><b>手机</b></th>
+                    <th><b>邮箱</b></th>
+                    <th><b>状态</b></th>
+                    <th><b>注册时间</b></th>
+                    <th><b>USDT数量</b></th>
+                    <th><b>谷歌验证</b></th>
+                    <th><b>手机验证</b></th>
+                    <th><b>邮箱验证</b></th>
+                    <th><b>交易次数</b></th>
+                    <th><b>操作</b></th>
+                </tr>
+
+                <tbody>
+                {foreach name="list" item="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.username}</td>
+                     <td>{$vo.phone}</td>
+                    <td>{$vo.email}</td>
+               
+                            <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="status" name="status" data-id="{$vo.id}" 
+                       lay-skin="switch" lay-text="开|禁" value="1" {if condition="$vo['status'] eq 1"}checked{/if} >
+            </td>
+                    <td>{$vo.register_time}</td>
+                    <td>{$vo.usdt_nums}</td>
+                 
+                          <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="verification_status" name="verification_status" data-id="{$vo.id}" 
+                       lay-skin="switch" lay-text="开|关" value="1" {if condition="$vo['verification_status'] eq 1"}checked{/if} >
+            </td>
+                    
+                        <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="phone_yz" name="phone_yz" data-id="{$vo.id}" 
+                       lay-skin="switch" lay-text="开|关" value="1" {if condition="$vo['phone_yz'] eq 1"}checked{/if} >
+            </td>
+                     <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="email_yz" name="email_yz" data-id="{$vo.id}" 
+                       lay-skin="switch" lay-text="开|关" value="1" {if condition="$vo['email_yz'] eq 1"}checked{/if} >
+            </td>
+                    <td>{$vo.transactions_num}</td>
+                     <td>
+                <a href="{:url('edit',array('id'=>$vo['id']))}" data-width="600px" data-height="450px" title="修改用户信息" class="layui-btn layui-btn-normal layui-btn-xs xn_open">
+                    <i class="layui-icon layui-icon-edit"></i>修改
+                </a>
+                {if condition="$vo['id'] neq 1"}
+                <a href="{:Url('delete',array('id'=>$vo['id']))}" title="确认要删除【{$vo.username}】吗？" class="layui-btn layui-btn-danger layui-btn-xs xn_delete">
+                    <i class="layui-icon layui-icon-delete"></i>删除
+                </a>
+                {/if}
+            </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="pages">{$list|raw}</div>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start_date'
+        });
+        laydate.render({
+            elem: '#end_date'
+        });
+    });
+</script>
+<script>
+    layui.form.on('switch(verification_status)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        var id = $(this).attr('data-id');
+      
+        var url = "{:url('user/edit')}";
+        $.post(url,{id:id,verification_status:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+    });
+    layui.form.on('switch(phone_yz)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        var id = $(this).attr('data-id');
+       
+        var url = "{:url('user/edit')}";
+        $.post(url,{id:id,phone_yz:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+       
+    });
+    
+     layui.form.on('switch(email_yz)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        var id = $(this).attr('data-id');
+       
+        var url = "{:url('user/edit')}";
+        $.post(url,{id:id,email_yz:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')   });  
+           layui.form.on('switch(status)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 0;
+        var id = $(this).attr('data-id');
+       
+        var url = "{:url('user/edit')}";
+        $.post(url,{id:id,status:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')   });  
+</script>
+{/block}

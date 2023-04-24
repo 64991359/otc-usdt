@@ -1,0 +1,53 @@
+{extend name="iframe" /}
+
+{block name="body"}
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <form action="{:request()->url()}" method="post" class="xn_ajax" data-type="open">
+        
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label">id</label>
+            <div class="layui-input-inline">
+                <input type="text" name="id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{$user_data.id}">
+            </div>
+        </div>
+     
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" placeholder="" autocomplete="off" class="layui-input" value="{$user_data.title}">
+            </div>
+        </div>
+       
+       <!-- <div class="layui-form-item">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-inline">
+                <input type="text" name="contents" placeholder="" autocomplete="off" class="layui-input" value="{$user_data.contents}">
+            </div>
+        </div>-->
+        <div class="layui-card">
+                <div class="layui-card-header"> </div>
+                <div class="layui-card-body" pad15="">
+                    <textarea name="contents" id="content">{$user_data.contents}</textarea>
+                </div>
+            </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" lay-submit class="layui-btn">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="js"}
+<!--编辑器-->
+<script src="/static/admin/ueditor/ueditor.config.js"></script>
+<script src="/static/admin/ueditor/ueditor.all.min.js"></script>
+<script src="/static/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+    UE.getEditor('content',{
+        initialFrameWidth :800,// 设置编辑器宽度
+        initialFrameHeight:200,// 设置编辑器高度
+        scaleEnabled:true
+    });
+</script>
+{/block}

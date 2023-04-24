@@ -1,0 +1,68 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class=" layui-card-header layuiadmin-card-header-auto">
+
+    <table class="layui-table" style="margin-top: 0;">
+        <tr>
+            <th><b>id</b></th>
+            <th><b>用户uid</b></th>
+            <th><b>标题</b></th>
+            <th><b>内容</b></th>
+            <th><b>读取状态</b></th>
+            <th><b>生成时间</b></th>
+         
+            <th style="padding: 0 15px;line-height: 40px;"><b>操作</b> <span style="float: right"><a href="{:url('message/add')}" data-width="800px" data-height="600px" class="layui-btn layui-btn-sm xn_open" title="添加用户">添加信息</a></span> </th>
+        </tr>
+
+        <tbody>
+        {foreach name="list" item="vo"}
+        <tr>
+            <td>{$vo.id}</td>
+            <td>{$vo.uid|default=''}</td>
+            <td>{$vo.title|default=''}</td>
+            <td><div style="width:300px;
+overflow:hidden; 
+white-space:nowrap; 
+text-overflow:ellipsis;">{$vo.contents|default=''}</div></td>
+            <td>{if $vo['has_readed'] eq '1'}已读{else/}未读{/if}</td>
+            <td>{$vo.create_time |date='Y-m-d H:i'}</td>
+          
+           
+            <td>
+                <a href="{:url('edit',array('id'=>$vo['id']))}"  data-width="800px" data-height="600px" title="修改信息" class="layui-btn layui-btn-normal layui-btn-xs xn_open">
+                    <i class="layui-icon layui-icon-edit"></i>修改
+                </a>
+                {if condition="$vo['id'] neq 1"}
+                <a href="{:Url('deletemsg',array('id'=>$vo['id']))}" title="确认要删除【{$vo.id}】吗？" class="layui-btn layui-btn-danger layui-btn-xs xn_delete">
+                    <i class="layui-icon layui-icon-delete"></i>删除
+                </a>
+                {/if}
+            </td>
+             
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="pages">{$list|raw}</div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start_date'
+        });
+        laydate.render({
+            elem: '#end_date'
+        });
+    });
+</script>
+{/block}

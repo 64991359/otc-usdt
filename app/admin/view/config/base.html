@@ -1,0 +1,151 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">网站设置</div>
+                <div class="layui-card-body" pad15="">
+                    <form action="{:request()->url()}" method="post" class="xn_ajax">
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">系统名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="sys_name" value="{$data.sys_name}" class="layui-input">
+                                </div>
+                            </div>
+                            
+                          <div class="layui-input-block">
+                                    <input type="hidden" name="authsys" value="159753" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">平台app下载</label>
+                                <div class="layui-input-block">
+                                        <input type="text" name="app_down_url" value="{$data.app_down_url}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                            
+                             <div class="layui-form-item" style="display:none">
+                                <label class="layui-form-label" style="width:100px">平台交易抽水(%)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                        <input type="number" name="poundage" placeholder="请输入数字" value="{$data.poundage|default='0.00'}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>平台收款与转帐帐号</legend>
+                            </fieldset>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">波场帐号(Trc20收款)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="text" name="trc20_collection_address" value="{$data.trc20_collection_address|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">波场密钥(Trc20密钥)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="password" name="trc20_collection_key" value="{$data.trc20_collection_key|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                              <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">波场帐号(Trc20付款)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="text" name="trc20_pay_address" value="{$data.trc20_pay_address|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">波场密钥(Trc20付款密钥)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="password" name="trc20_pay_key" value="{$data.trc20_pay_key|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                            
+                               <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">以太坊帐号(erc20收款)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="text" name="erc20_collection_address" value="{$data.erc20_collection_address|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">以太坊密钥(erc20密钥)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="password" name="erc20_collection_key" value="{$data.erc20_collection_key|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                              <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">以太坊帐号(erc20收款付款)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="text" name="erc20_pay_address" value="{$data.erc20_pay_address|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">以太坊密钥(erc20付款密钥)</label>
+                                <div class="layui-input-block" style="width:360px">
+                                        <input type="password" name="erc20_pay_key" value="{$data.erc20_pay_key|default=''}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>USDT汇率配置</legend>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">登录验证码</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="login_vercode" value="1" {if condition="$data['login_vercode'] eq 1"} checked{/if} lay-skin="switch" lay-text="开启|关闭">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:130px">自动更新usdt汇率</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="auto_update" value="1" {if condition="$data['auto_update'] eq 1"} checked{/if} lay-skin="switch" lay-text="开启|关闭">
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label">币安价格</label>
+                                <div class="layui-input-block" style="width:80px">
+                                    <input type="text" name="pexpay_price" value="{$data['pexpay_price']}" class="layui-input">
+                                </div>
+                            </div>
+                              <div class="layui-form-item">
+                                <label class="layui-form-label">欧易价格</label>
+                                <div class="layui-input-block" style="width:80px">
+                                    <input type="text" name="okx_price" value="{$data['okx_price']}" class="layui-input">
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                <label class="layui-form-label">平台usdt价格</label>
+                <div class="layui-input-block" style="width:80px">
+                    <input type="text" name="usdt_price" class="layui-input" lay-reqtext="usdt汇率" placeholder="请输入usdt汇率" value="{$data.usdt_price|default='1'}">
+                    <tip>usdt兑换人民币。<span><a href="/admin/config/updateusdt.html" class="layui-btn layui-btn-sm layui-btn-danger">更新</a></span></tip>
+                </div>
+            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">usdt价格修正</label>
+                                <div class="layui-input-block" style="width:80px">
+                                    <input type="text" name="usdt_modify" value="{$data.usdt_modify}" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="set_website">确认保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

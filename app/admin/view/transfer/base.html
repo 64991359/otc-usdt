@@ -1,0 +1,138 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">转帐设置</div>
+                <div class="layui-card-body" pad15="">
+                    <form action="{:request()->url()}" method="post" class="xn_ajax">
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">限额(usdt)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                    <input type="text" id="xiner" name="amount" value="{$data.amount}" class="layui-input">
+                                </div>
+                            </div>
+                           
+                         <div class="layui-form-item">
+                                <label class="layui-form-label">限额方式</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="transfer_status" lay-filter="radio_transfer_status" class="radio_transfer_status" value="0" title="手工" {if condition="$data['transfer_status'] eq 0"}checked=""{/if}>
+                                    <input type="radio" name="transfer_status" lay-filter="radio_transfer_status" class="radio_transfer_status" value="1" title="自动" {if condition="$data['transfer_status'] eq 1"}checked=""{/if}>
+                                    <input type="radio" name="transfer_status" lay-filter="radio_transfer_status" class="radio_transfer_status" value="2" title="限额以下自动" {if condition="$data['transfer_status'] eq 2"}checked=""{/if}>
+                                     <input type="radio" name="transfer_status" lay-filter="radio_transfer_status" class="radio_transfer_status" value="3" title="限额以上自动" {if condition="$data['transfer_status'] eq 3"}checked=""{/if}>
+                                </div>
+                            </div>
+                           
+                          
+                          
+                            
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" style="width:100px">转帐抽水(%)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                        <input type="text" name="default_free" lay-filter="number" placeholder="请输入数字" value="{$data.default_free|default='0.00'}" class="layui-input">
+                                
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label">每笔固定抽佣(usdt)</label>
+                                <div class="layui-input-block"  style="width:60px">
+                                   
+                                       <input type="number" name="commission" placeholder="请输入数字" value="{$data.commission|default='0.00'}" class="layui-input">
+                                </div>
+                            </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label">超时时间(分钟)</label>
+                                <div class="layui-input-block" style="width:60px">
+                                   
+                                       <input type="number" name="timeout" placeholder="请输入数字" value="{$data.timeout|default='0'}" class="layui-input">
+                                </div>
+                            </div>
+                           
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend>平台内转帐</legend>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">是否免费</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="platform_free_charge" value="{$data.platform_free_charge}" {if condition="$data['platform_free_charge'] eq 1"} checked{/if} lay-skin="switch" lay-filter="switchs" lay-text="开启|关闭">
+                                </div>
+                            </div>
+                           
+                       
+                         
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="set_website">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+
+    layui.use(['form','jquery'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var status='{$data['platform_free_charge']}';
+         console.log(status)
+          form.verify({
+           number: [
+               /^(([^0][0-9]+|0)\.([0-9]{1,2}))$/
+               , '只能输入小数'
+           ]
+         });
+         //监听指定开关
+        form.on('switch(switchs)', function(res){
+            if(this.checked){
+               // layer.msg('开启');
+               console.log(this.checked)
+                status='1';
+              
+            }else{
+                //layer.msg('关掉');
+                 console.log(this.checked)
+                status='0';
+            }
+            console.log(res)
+            $.ajax({
+            url:"{:request()->url()}",
+            data:{platform_free_charge:status},
+            type:"post",
+            //dataType:"json",
+         // headers : {'Content-Type' : 'application/json;charset=utf-8'}, //接口json格式
+            success:function(data){
+                console.log(data);
+                layer.msg(data.msg);
+            },
+            error:function(data){
+                layer.msg(data.msg);
+            }
+
+        }); return false; });
+
+        //点击勾选
+     
+        form.on('radio(radio_transfer_status)', function (data) {
+            var value = $(this).val();
+            if(value < 2){
+                $('#xiner').val('0');
+            }
+            console.log(value);
+            $('.transfer_status_setting').hide();
+            $('.transfer_status_' + value).show();
+            form.render('radio');
+        });
+    });
+</script>
+{/block}

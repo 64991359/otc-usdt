@@ -1,0 +1,821 @@
+{extend name="main" /}
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN" class="mobile-nav-visible v2  ">
+  
+  <head>{block name="head"}
+    <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-icon-57x57.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-icon-60x60.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-icon-72x72.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-icon-76x76.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-icon-114x114.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-icon-120x120.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-icon-144x144.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-icon-152x152.png?v=1633105205">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-icon-180x180.png?v=1633105205">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.webp?v=1633105205">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicons/favicon-96x96.webp?v=1633105205">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.webp?v=1633105205">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicons/favicon-192x192.webp?v=1633105205">
+    <meta name="msapplication-TileColor" content="#6b33a7">
+    <meta name="msapplication-TileImage" content="/assets/images/favicons/ms-icon-144x144.png?v=1633105205">
+    <meta name="msapplication-square70x70logo" content="/assets/images/favicons/ms-icon-70x70.png?v=1633105205">
+    <meta name="msapplication-square150x150logo" content="/assets/images/favicons/ms-icon-150x150.png?v=1633105205">
+    <meta name="msapplication-square310x310logo" content="/assets/images/favicons/ms-icon-310x310.png?v=1633105205">
+    <meta name="msapplication-wide310x150logo" content="/assets/images/favicons/ms-icon-310x150.png?v=1633105205">
+    <link media="all" type="text/css" rel="stylesheet" href="/static/css/index.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/2/css/live/authenticated-29ce6fb0e8.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/2/css/live/core-3ecb873761.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/2/css/live/app-0d98e0b6e7.min.css?v=1635247548">
+    <link rel="stylesheet" property="stylesheet" href="/2/css/live/ts-bundle.a7b829de036a22d95cf1.css" type="text/css">
+    <link rel="stylesheet" property="stylesheet" href="/2/css/live/global-bootstrap-bundle.76f721e3908722c1375a.css" type="text/css">
+    <style>.fake-zendesk-button.fake-zendesk-button { position: fixed; z-index: 1014; right: 24px; bottom: 14px; box-sizing: border-box; display: flex; align-items: center; padding: 13px 22px; border: none; border-radius: 23px; font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 20px; letter-spacing: 0.6px; background-color: #7f59ad; color: #ffffff; fill: #ffffff; cursor: pointer; } [dir=rtl] .fake-zendesk-button.fake-zendesk-button { left: 24px; right: auto; } .fake-zendesk-button_hidden.fake-zendesk-button_hidden { display: none; } .fake-zendesk-button:focus { outline: none; box-shadow: inset 0 0 0 0.21429rem rgba(255, 255, 255, 0.4); } .fake-zendesk-button__icon { height: 20px; width: 20px; } .fake-zendesk-button__loading-icon { display: none; } .fake-zendesk-button__loading-icon_show { display: inline-block; animation: rotating 2s linear infinite; } .fake-zendesk-button__text { font-size: 15px; margin-left: 8px; } [dir=rtl] .fake-zendesk-button__text { margin-right: 8px; margin-left: 0; } @media (max-width: 1024px), only screen and (hover: none) and (pointer: coarse) { .fake-zendesk-button.fake-zendesk-button { padding: 13px; border-radius: 50%; } .fake-zendesk-button__text { display: none; } } @keyframes rotating { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } #ada-entry { z-index: 1040; position: relative; }.US_svg__st0{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.XCD_svg__cls-3{fill:#fff}.XAF_svg__cls-1{fill:#006ab3}.XAF_svg__cls-3{fill:#77eaec}.UZ_svg__st0{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.UG_svg__st1,.UG_svg__st2{fill-rule:evenodd;clip-rule:evenodd;fill:#0d0d0d}.UG_svg__st2{fill:#fff}.HR_svg__st1{fill-rule:evenodd;clip-rule:evenodd;fill:#ff202d}.CD_svg__st1{fill-rule:evenodd;clip-rule:evenodd;fill:#fdd216}.LR_svg__st0{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.CA_svg__st0{fill-rule:evenodd;clip-rule:evenodd;fill:red}.ZA_svg__st3{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.IN_svg__st3{fill-rule:evenodd;clip-rule:evenodd;fill:#181a93}</style>
+    <style>.ER_svg__st4{fill-rule:evenodd;clip-rule:evenodd;fill:#ffc63c}</style>
+    <!--[if lt IE 9]>
+      <script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js">
+      </script>
+    <![endif]-->
+    <script src="/static/js/vue.min.js">
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js">
+    </script>
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js">
+    </script>
+    <script src="/static/js/main.js">
+    </script>
+    <script src="/dist/layer.js">
+    </script>{/block}</head>
+  
+  <body class=" ltr" >{block name="body"}
+    <div id="global-error-modal"></div>
+    <div id="app">{include file="nav" /}
+      <section id="overview" class="react-app user_profile">
+        <div class="container-fluid mb-5 mt-sm-5">
+          <div class="row">
+            <div class="col-lg-4 col-xl-3">
+              <nav class="profileSidebar d-flex flex-column mb-4">
+                <ul class="card list-unstyled p-2 mb-0 qa-tabs-left order-2 order-md-1 mt-3 mt-md-0">
+                  <li class=" mb-2">
+              <a href="/user/account/index" class="profileSidebar__item d-flex align-items-center justify-content-start qa-sidebar-item-profile" role="tab">
+                <svg viewBox="0 0 16 16" class="icon icon-16 mr-2" fill="currentColor">
+                  <use xlink:href="#icon-profile" href="#icon-profile">
+                  </use>
+                </svg>个人资料</a>
+            </li>
+            <li class="active  mb-2">
+              <a href="/user/account/security" class="profileSidebar__item d-flex align-items-center justify-content-start qa-sidebar-item-security" role="tab">
+                <svg viewBox="0 0 16 16" class="icon icon-16 mr-2" fill="currentColor">
+                  <use xlink:href="#icon-security" href="#icon-security">
+                  </use>
+                </svg>安全问题</a>
+            </li>
+            <li class=" mb-2">
+              <a href="/user/account/payment" class="profileSidebar__item d-flex align-items-center justify-content-start qa-sidebar-item-bank-account" role="tab">
+                <svg viewBox="0 0 16 16" class="icon icon-16 mr-2" fill="currentColor">
+                  <use xlink:href="#icon-banks" href="#icon-banks">
+                  </use>
+                </svg>支付方式</a>
+            </li>
+          
+            <li class=" mb-2">
+              <a href="/user/verification"  class="profileSidebar__item d-flex align-items-center justify-content-start qa-sidebar-item-developer" role="tab">
+                <svg viewBox="0 0 16 16" class="icon icon-16 mr-2" fill="currentColor">
+                  <use xlink:href="#icon-completed-trades" href="#icon-completed-trades">
+                  </use>
+                </svg>验证</a>
+            </li>
+           
+            <li class=" mb-2">
+              <a href="/user/account/questions" class="profileSidebar__item d-flex align-items-center justify-content-start qa-sidebar-item-security-questions" role="tab">
+                <svg viewBox="0 0 16 16" class="icon icon-16 mr-2" fill="currentColor">
+                  <use xlink:href="#icon-info" href="#icon-info">
+                  </use>
+                </svg>设置安全问题</a>
+            </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-lg-8 col-xl-9">
+              <div class="tab-content account-tab-content">
+                <div id="toaster-notifications">
+                </div>
+                <div id="userSecurityPage">
+                  <div class="react-app">
+                    <div class="rounded p-sm-3 px-0 py-3 p-md-5 mb-4 container-fluid border">
+                      <h2 class="text-purple-500 mb-4 h2-responsive">双因素验证设置</h2>
+                      {if $user.q1 eq ''}
+                      <div class="bg-gray-200 px-3 py-2_5 d-flex align-items-center rounded mb-4">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="icon-32">
+                          <path fill="var(--icons-bg-fill, #ffffff)" d="M9.5 4.5l-5 5 6 3.5 2.5-2-3.5-6.5zm9.5 6l3.5-6 5 5L21 13l-2-2.5zm-9.5 17l-5-5L11 19l2 2-3.5 6.5zm18-5l-5 5L19 21l2-2 6.5 3.5z">
+                          </path>
+                          <path fill="var(--icons-primary, #0097db)" d="M10.366 4.242l-1.732 1 3.506 6.072 1.746-.975-3.52-6.097zm11.268 23.516l1.732-1-3.544-6.138-1.712 1.034 3.524 6.104zm1.732-22.516l-1.732-1L18.02 10.5l1.838.815 3.507-6.073zM8.634 26.758l1.732 1 3.613-6.258-1.818-.851-3.527 6.11zm-4.392-5.124l1 1.732 6.11-3.528-1.033-1.713-6.077 3.509zm23.516-11.268l-1-1.732-6.137 3.543 1 1.732 6.137-3.543zM5.242 8.634l-1 1.732 6.13 3.54.925-1.776-6.055-3.496zm21.516 14.732l1-1.732-6.127-3.538-.86 1.813 5.987 3.457z">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4zM2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16z" clip-rule="evenodd">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 11a5 5 0 100 10 5 5 0 000-10zm-7 5a7 7 0 1114 0 7 7 0 01-14 0z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                        <span class="ml-3">在设置双因素验证之前设置您的安全问题答案。
+                          <a id="security-questions-page" href="/user/account/questions" class="align-baseline btn btn-link btn-lg">立即设置</a>
+                        </span>
+                      </div>
+                      {/if}
+                      <p class="font-weight-semibold">设置双因素验证，让您的账号更加安全。</p>
+                      
+                      <div class="d-flex flex-column p-sm-4 p-3 rounded mb-1 LEjVT bg-gray-200 tQrSK">
+                  
+                        <div class="d-flex justify-content-between  flex-column cursor-pointer">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                              <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="mr-3 d-sm-block d-none">
+                                <path fill="var(--icons-bg-fill, #ffffff)" d="M4 6.673A2 2 0 015.675 4.7L16 3l10.325 1.7A2 2 0 0128 6.673v12.505a2 2 0 01-.729 1.544l-10 8.232a2 2 0 01-2.542 0l-10-8.232A2 2 0 014 19.178V6.673z">
+                                </path>
+                                <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 1.987l10.487 1.726A3 3 0 0129 6.673v12.505a3 3 0 01-1.093 2.316l-10 8.232a3 3 0 01-3.814 0l-10-8.232A3 3 0 013 19.178V6.673a3 3 0 012.513-2.96L16 1.987zm0 2.026L5.838 5.688A1 1 0 005 6.673v12.505a1 1 0 00.364.772l10 8.232a1 1 0 001.271 0l10-8.232a1 1 0 00.365-.772V6.673a1 1 0 00-.838-.986L16 4.013z" clip-rule="evenodd">
+                                </path>
+                                <path fill="var(--icons-bg-fill, #ffffff)" d="M6 9.053a2 2 0 011.663-1.971L14 6l6.337 1.082A2 2 0 0122 9.053v7.862a2 2 0 01-.701 1.521l-6 5.122a2 2 0 01-2.598 0l-6-5.122A2 2 0 016 16.916V9.052z">
+                                </path>
+                                <path fill="var(--icons-primary, #0097db)" fill-rule="evenodd" d="M16 5.987l6.487 1.068A3 3 0 0125 10.015v7.456a3 3 0 01-1.093 2.316l-6 4.939a3 3 0 01-3.814 0l-6-4.94A3 3 0 017 17.472v-7.456a3 3 0 012.513-2.96L16 5.987zm0 2.027L9.838 9.027a1 1 0 00-.838.987v7.456a1 1 0 00.364.772l6 4.939a1 1 0 001.271 0l6-4.94A1 1 0 0023 17.47v-7.456a1 1 0 00-.838-.987L16 8.014z" clip-rule="evenodd">
+                                </path>
+                                <path fill="var(--icons-bg-fill, #ffffff)" d="M18 15a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                                <path fill="var(--icons-primary, #0097db)" fill-rule="evenodd" d="M16 14a1 1 0 100 2 1 1 0 000-2zm-3 1a3 3 0 116 0 3 3 0 01-6 0z" clip-rule="evenodd">
+                                </path>
+                              </svg>
+                              <div>
+                                <div>
+                                  <span class="font-weight-bold">谷歌动态口令</span>
+                                  <span class="tag tag--sm tag-secondary d-sm-inline d-none text-purple-500 mx-3" @click="active_google">推荐</span>
+                                </div>
+                                <span class="text-gray-600 d-sm-block d-none">App生成的随机限时密码。</span>
+                              </div>
+                            </div>
+                             {if $user.google_key_status}
+                            <h4 class="mb-0 d-sm-block d-none  text-green-800" @click="active_google">已激活</h4>
+                             {else/}
+                             <h4 class="mb-0 d-sm-block d-none text-blue-700" @click="active_google">立即激活</h4>
+                              {/if}
+                          </div>
+                         
+                          
+           
+                         
+                         <h3 class="mb-0 mt-3 d-block d-sm-none text-blue-700">立即激活</h3>
+                         
+                        </div>
+                        <div :class="googleShow ?'_0ngGp expandTwoFa T7nbj opened collapse show'  : '_0ngGp expandTwoFa collapse'">
+                            
+                           
+                        <div class="bg-white border rounded mt-3 p-4 shadow--soft">
+                            <p>{if $user.google_key_status}关闭{else/}使用{/if}
+                              <a href="https://support.google.com/accounts/answer/1066447" rel="noopener noreferrer" target="_blank">谷歌动态口令</a>或
+                              <!--<a href="#" rel="noopener noreferrer" target="_blank">Authy</a>-->生成验证码，{if $user.google_key_status}您将失去{else/}增加{/if}额外的安全保护。</p>
+                            <div class="d-flex align-items-center flex-column flex-sm-row">
+                              <div class="d-flex align-items-center justify-content-center mr-sm-5 mb-3 mb-sm-0 Umzu6">
+                                <!--<div class="d-flex flex-column align-items-center">
+                                  <span class="d-flex Loader-module_loader__kpm_V">
+                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-width="2" d="M16 1C7.716 1 1 7.716 1 16c0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15a15 15 0 00-.621-4.286">
+                                      </path>
+                                    </svg>
+                                  </span>
+                                </div>-->
+                                <div class="d-flex flex-start primary-font p-0 mr-sm-5 mb-3 mb-sm-0 dark-theme-icon-disable"><div class="position-relative p-2_5 border rounded QRCode-module_container___Vuii QRCode-module_sm__FVp7g"><div class="position-absolute cursor-pointer QRCode-module_overlay__2E_vc"></div><div class="ml-n2_5 mt-n2_5 d-flex w-100 h-100 position-absolute align-items-center justify-content-center">
+                                    
+                                    <img style="max-width: 100px; max-height: 100px;" src="{$user.qr_code_url}">
+                                </div></div>
+                              </div>
+                              <div>
+                                <p class="mb-1">请扫描此二维码或复制进行手动设置。</p>
+                                <button type="button" disabled="" id="qr" class="text-blue-700 font-weight-semibold text-left btn btn-unstyled btn-md disabled">复制密钥<!--<label class="">{$user.google_key}</label>--></button>
+                              </div>
+                            </div>
+                            <div class="mt-4">
+                              <div>
+                                <label class="">双因素验证码</label>
+                                <div class="d-flex">
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,0)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_1">
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,1)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_2">
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,2)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_3">
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,3)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_4">
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,4)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_5">
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-between form-control form-control--square mr-2 form-control__disabled">
+                                    <input maxlength="1" inputmode="numeric" @keyup="nextFocus($event,5)" type="text" class="min-width-0 border-transparent py-0 h3 h3-responsive m-0 p-0 text-center form-control" v-on:input="google_code_check()" value="" v-model="code_6">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column p-sm-4 p-3 rounded mb-1 LEjVT">
+                        <div class="d-flex justify-content-between  flex-column cursor-pointer">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                              <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="mr-3 d-sm-block d-none">
+                                <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M30 15a3 3 0 00-3-3H11a3 3 0 00-3 3v9.793a3 3 0 003 3h9.002a1 1 0 01.799.4l.468.622c1.565 2.082 4.713 1.28 5.302-1.022H27a3 3 0 003-3V15zm-3-1a1 1 0 011 1v9.793a1 1 0 01-1 1h-2.333v1.219c0 .96-1.223 1.368-1.8.6l-.468-.622a3 3 0 00-2.398-1.197H11a1 1 0 01-1-1V15a1 1 0 011-1h16z" clip-rule="evenodd">
+                                </path>
+                                <path fill="var(--icons-secondary, #454c59)" d="M12 18a1 1 0 011-1h8a1 1 0 110 2h-8a1 1 0 01-1-1zm0 4a1 1 0 011-1h4a1 1 0 110 2h-4a1 1 0 01-1-1z">
+                                </path>
+                                <path fill="var(--icons-bg-fill, #ffffff)" d="M21 3H5a2 2 0 00-2 2v9.793a2 2 0 002 2h1.333v.219c0 1.92 2.445 2.737 3.599 1.202l.468-.623a2 2 0 011.598-.798H21a2 2 0 002-2V5a2 2 0 00-2-2z">
+                                </path>
+                                <path fill="var(--icons-primary, #0097db)" fill-rule="evenodd" d="M2 5a3 3 0 013-3h16a3 3 0 013 3v9.793a3 3 0 01-3 3h-9.002a1 1 0 00-.799.4l-.468.622c-1.565 2.082-4.713 1.28-5.302-1.022H5a3 3 0 01-3-3V5zm3-1a1 1 0 00-1 1v9.793a1 1 0 001 1h2.333v1.219c0 .96 1.222 1.368 1.8.6l.468-.622a3 3 0 012.397-1.197H21a1 1 0 001-1V5a1 1 0 00-1-1H5z" clip-rule="evenodd">
+                                </path>
+                                <path fill="var(--icons-primary, #0097db)" d="M6 8a1 1 0 011-1h8a1 1 0 110 2H7a1 1 0 01-1-1zm0 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1z">
+                                </path>
+                              </svg>
+                              <div>
+                                <div>
+                                  <span class="font-weight-bold">短信验证</span>
+                                </div>
+                                <span class="text-gray-600 d-sm-block d-none">通过短信发送的唯一限时验证码。</span>
+                              </div>
+                            </div>
+                            {if $user.active_sns_open eq '1'}
+                            <h4 class="mb-0 d-sm-block d-none text-green-800" @click="active_sns(1)">已激活</h4>
+                            {else/}
+                            
+                            
+                            <h4 v-if="active_sns_open"  class="mb-0 d-sm-block d-none text-green-800" @click="active_sns(1)">已激活</h4>
+                            <h4  v-else  class="mb-0 d-sm-block d-none text-blue-700" @click="active_sns(1)">立即激活</h4>
+                            {/if}
+                          </div>
+                          <h3 class="mb-0 mt-3 d-block d-sm-none text-blue-700" @click="active_sns(1)">立即激活</h3>
+                        </div>
+                       <!-- _0ngGp expandTwoFa collapse-->
+                        <div :class=" snsopen  ? '_0ngGp expandTwoFa T7nbj collapse show ' : '_0ngGp expandTwoFa collapse'">
+                          <div class="bg-white border rounded mt-3 p-4 shadow--soft">
+                            <p class="mb-3">为提升安全性，请考虑使用谷歌动态口令或Authy。</p>
+                            <button type="button" class="btn btn-primary btn-md" @click="active_sns(2)">启用短信双因素验证</button>
+                          </div>
+                        </div>
+                        <!--短信begin-->
+                        <div :class=" snsopen2  ?'_0ngGp expandTwoFa T7nbj collapse show':'_0ngGp expandTwoFa  collapse'"><div class="mt-3"><div style="opacity: 1;"><div class="d-flex flex-column border rounded shadow--soft bg-white px-4 py-3 mt-3"><p class="font-weight-semibold">双因素验证活动设置</p><div class="d-flex justify-content-between mb-2"><span class="text-gray-600 font-weight-semibold">活动名称</span><span class="text-gray-600 font-weight-semibold">启用双因素验证</span></div><div class="border-top py-2_5"><div class="d-flex justify-content-between"><span class="font-weight-bold">登录</span><label class="switcher reflect-element btn-unstyled">
+                            <input type="checkbox" class="switcher-input"  v-model= "msg_login" @click="open_sns(1)">
+                            <span class="reflect-element"></span></label></div></div><div class="border-top py-2_5"><div class="d-flex justify-content-between"><span class="font-weight-bold">发送加密货币</span><label class="switcher reflect-element btn-unstyled">
+                                <input type="checkbox" class="switcher-input" v-model= "msg_send" @click="open_sns(2)">
+                                <span class="reflect-element"></span></label></div></div><div class="border-top py-2_5"><div class="d-flex justify-content-between"><span class="font-weight-bold">接收加密货币</span><label class="switcher reflect-element btn-unstyled">
+                                    <input type="checkbox" class="switcher-input" v-model= "msg_get" @click="open_sns(3)">
+                                    <span class="reflect-element"></span></label></div></div></div></div></div></div>
+                        <!--短信end--->
+                      </div>
+                    </div>
+                    <div class="rounded p-sm-3 px-0 py-3 p-md-5 mb-4 container-fluid border">
+                      <h2 class="text-purple-500 mb-4 h2-responsive">更改密码</h2>
+                      <div class="bg-gray-200 px-3 py-2_5 d-flex align-items-center rounded">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="icon-32">
+                          <path fill="var(--icons-bg-fill, #ffffff)" d="M9.5 4.5l-5 5 6 3.5 2.5-2-3.5-6.5zm9.5 6l3.5-6 5 5L21 13l-2-2.5zm-9.5 17l-5-5L11 19l2 2-3.5 6.5zm18-5l-5 5L19 21l2-2 6.5 3.5z">
+                          </path>
+                          <path fill="var(--icons-primary, #0097db)" d="M10.366 4.242l-1.732 1 3.506 6.072 1.746-.975-3.52-6.097zm11.268 23.516l1.732-1-3.544-6.138-1.712 1.034 3.524 6.104zm1.732-22.516l-1.732-1L18.02 10.5l1.838.815 3.507-6.073zM8.634 26.758l1.732 1 3.613-6.258-1.818-.851-3.527 6.11zm-4.392-5.124l1 1.732 6.11-3.528-1.033-1.713-6.077 3.509zm23.516-11.268l-1-1.732-6.137 3.543 1 1.732 6.137-3.543zM5.242 8.634l-1 1.732 6.13 3.54.925-1.776-6.055-3.496zm21.516 14.732l1-1.732-6.127-3.538-.86 1.813 5.987 3.457z">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4zM2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16z" clip-rule="evenodd">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 11a5 5 0 100 10 5 5 0 000-10zm-7 5a7 7 0 1114 0 7 7 0 01-14 0z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                        <span class="ml-3">如果您忘记当前密码，请退出登录，前往登录页面，然后点击
+                          <span class="font-weight-semibold text-gray-900">忘记密码</span>。</span>
+                      </div>
+                      <form action="#" autocomplete="off" class="mb-0">
+                        <div class="row">
+                          <div class="col-12 col-lg-6">
+                            <div class="mt-4">
+                              <label for="oldPassword" class="">当前密码</label>
+                              <div class="d-flex align-items-center justify-content-between form-control mb-2">
+                                <input name="oldPassword" id="oldPassword" data-recording-disable="true" placeholder="您的当前密码" :type="showpwd ? 'password':'text'" class="min-width-0 border-transparent py-0 form-control" value="" v-model="pwd" :input="even_pwd()">
+                                <button type="button" class="btn-square btn btn-transparent btn-md">
+                                  <svg v-if="showpwd" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(1)">
+                                    <path  d="M12 19.7c-4 0-7.6-2.2-9.2-5.5-.3-.7-.5-1.5-.5-2.2v-.2c0-.7.2-1.3.5-2C4.4 6.4 8 4.2 12 4.2s7.6 2.2 9.2 5.5c.3.7.5 1.5.5 2.2 0 .8-.2 1.5-.5 2.2-1.6 3.5-5.3 5.6-9.2 5.6zm-8.3-7.5c0 .5.2.9.4 1.4 1.4 2.8 4.5 4.7 7.9 4.7s6.5-1.8 7.9-4.7c.2-.5.4-1 .4-1.6 0-.5-.1-1.1-.4-1.6-1.4-2.8-4.5-4.7-7.9-4.7s-6.5 1.8-7.9 4.7c-.2.5-.4 1-.4 1.6.1.1 0 .1 0 .2z">
+                                    </path>
+                                    <path d="M12 15.8c-2.1 0-3.8-1.7-3.8-3.8S9.9 8.2 12 8.2s3.8 1.7 3.8 3.8c-.1 2.1-1.7 3.8-3.8 3.8zm0-6c-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2-1-2.2-2.2-2.2z">
+                                    </path>
+                                  </svg>
+                                  <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(1)"><path d="M21.5 11.2c-.5-1-1.2-1.9-1.9-2.7-.3-.3-.7-.4-1.1-.1-.3.3-.4.7-.1 1.1.7.8 1.2 1.6 1.7 2.5v.2c-2 3.6-5.3 6.1-8.2 6.1-.7 0-1.5-.1-2.2-.4-.4-.1-.8 0-1 .4s0 .8.4 1c.9.4 1.9.5 2.8.5 4 0 7.7-3.5 9.5-6.9.4-.6.4-1.2.1-1.7zm-2-6.7c-.3-.3-.8-.3-1.1 0L17 6c-1.6-1.1-3.3-1.7-5-1.7-4 0-7.7 3.5-9.5 6.9-.3.5-.3 1.1 0 1.6.9 1.6 2.1 3.1 3.4 4.3l-1.4 1.4c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l14-14c.3-.4.3-.8 0-1.1zM3.8 12.1v-.2c2-3.6 5.3-6.1 8.2-6.1 1.3 0 2.6.5 3.9 1.3l-1.7 1.7c-1.5-1-3.6-.9-4.9.5-.8.7-1.2 1.7-1.2 2.7 0 .8.2 1.5.7 2.2L6.9 16c-1.2-1-2.3-2.4-3.1-3.9zm6.1 1c-.2-.3-.3-.7-.3-1.1 0-.6.2-1.2.7-1.7.7-.7 1.9-.9 2.8-.4z"></path></svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="mt-4">
+                              <label for="newPassword" class="">新密码</label>
+                              <div class="d-flex align-items-center justify-content-between form-control mb-2">
+                                <input name="newPassword" id="newPassword" data-recording-disable="true" placeholder="请输入新密码" type="password" class="min-width-0 border-transparent py-0 form-control" value="" v-model="pwd1"  :type="showpwd1 ? 'password':'text'"  :input="even_pwd()">
+                                <button type="button" class="btn-square btn btn-transparent btn-md">
+                                  <svg v-if="showpwd1" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(2)">
+                                    <path d="M12 19.7c-4 0-7.6-2.2-9.2-5.5-.3-.7-.5-1.5-.5-2.2v-.2c0-.7.2-1.3.5-2C4.4 6.4 8 4.2 12 4.2s7.6 2.2 9.2 5.5c.3.7.5 1.5.5 2.2 0 .8-.2 1.5-.5 2.2-1.6 3.5-5.3 5.6-9.2 5.6zm-8.3-7.5c0 .5.2.9.4 1.4 1.4 2.8 4.5 4.7 7.9 4.7s6.5-1.8 7.9-4.7c.2-.5.4-1 .4-1.6 0-.5-.1-1.1-.4-1.6-1.4-2.8-4.5-4.7-7.9-4.7s-6.5 1.8-7.9 4.7c-.2.5-.4 1-.4 1.6.1.1 0 .1 0 .2z">
+                                    </path>
+                                    <path d="M12 15.8c-2.1 0-3.8-1.7-3.8-3.8S9.9 8.2 12 8.2s3.8 1.7 3.8 3.8c-.1 2.1-1.7 3.8-3.8 3.8zm0-6c-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2-1-2.2-2.2-2.2z">
+                                    </path>
+                                  </svg>
+                                  <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(2)"><path d="M21.5 11.2c-.5-1-1.2-1.9-1.9-2.7-.3-.3-.7-.4-1.1-.1-.3.3-.4.7-.1 1.1.7.8 1.2 1.6 1.7 2.5v.2c-2 3.6-5.3 6.1-8.2 6.1-.7 0-1.5-.1-2.2-.4-.4-.1-.8 0-1 .4s0 .8.4 1c.9.4 1.9.5 2.8.5 4 0 7.7-3.5 9.5-6.9.4-.6.4-1.2.1-1.7zm-2-6.7c-.3-.3-.8-.3-1.1 0L17 6c-1.6-1.1-3.3-1.7-5-1.7-4 0-7.7 3.5-9.5 6.9-.3.5-.3 1.1 0 1.6.9 1.6 2.1 3.1 3.4 4.3l-1.4 1.4c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l14-14c.3-.4.3-.8 0-1.1zM3.8 12.1v-.2c2-3.6 5.3-6.1 8.2-6.1 1.3 0 2.6.5 3.9 1.3l-1.7 1.7c-1.5-1-3.6-.9-4.9.5-.8.7-1.2 1.7-1.2 2.7 0 .8.2 1.5.7 2.2L6.9 16c-1.2-1-2.3-2.4-3.1-3.9zm6.1 1c-.2-.3-.3-.7-.3-1.1 0-.6.2-1.2.7-1.7.7-.7 1.9-.9 2.8-.4z"></path></svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="mt-4">
+                              <label for="confirmNewPassword" class="">确认密码</label>
+                              <div class="d-flex align-items-center justify-content-between form-control mb-2">
+                                <input name="confirmNewPassword" id="confirmNewPassword" data-recording-disable="true" placeholder="确认新密码" type="password" class="min-width-0 border-transparent py-0 form-control" value="" v-model="pwd2"  :type="showpwd2 ? 'password':'text'" :input="even_pwd()">
+                                <button type="button" class="btn-square btn btn-transparent btn-md">
+                                  <svg v-if="showpwd2" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(3)">
+                                    <path d="M12 19.7c-4 0-7.6-2.2-9.2-5.5-.3-.7-.5-1.5-.5-2.2v-.2c0-.7.2-1.3.5-2C4.4 6.4 8 4.2 12 4.2s7.6 2.2 9.2 5.5c.3.7.5 1.5.5 2.2 0 .8-.2 1.5-.5 2.2-1.6 3.5-5.3 5.6-9.2 5.6zm-8.3-7.5c0 .5.2.9.4 1.4 1.4 2.8 4.5 4.7 7.9 4.7s6.5-1.8 7.9-4.7c.2-.5.4-1 .4-1.6 0-.5-.1-1.1-.4-1.6-1.4-2.8-4.5-4.7-7.9-4.7s-6.5 1.8-7.9 4.7c-.2.5-.4 1-.4 1.6.1.1 0 .1 0 .2z">
+                                    </path>
+                                    <path d="M12 15.8c-2.1 0-3.8-1.7-3.8-3.8S9.9 8.2 12 8.2s3.8 1.7 3.8 3.8c-.1 2.1-1.7 3.8-3.8 3.8zm0-6c-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2-1-2.2-2.2-2.2z">
+                                    </path>
+                                  </svg>
+                                  <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon d-block" @click="showpassword(3)"><path d="M21.5 11.2c-.5-1-1.2-1.9-1.9-2.7-.3-.3-.7-.4-1.1-.1-.3.3-.4.7-.1 1.1.7.8 1.2 1.6 1.7 2.5v.2c-2 3.6-5.3 6.1-8.2 6.1-.7 0-1.5-.1-2.2-.4-.4-.1-.8 0-1 .4s0 .8.4 1c.9.4 1.9.5 2.8.5 4 0 7.7-3.5 9.5-6.9.4-.6.4-1.2.1-1.7zm-2-6.7c-.3-.3-.8-.3-1.1 0L17 6c-1.6-1.1-3.3-1.7-5-1.7-4 0-7.7 3.5-9.5 6.9-.3.5-.3 1.1 0 1.6.9 1.6 2.1 3.1 3.4 4.3l-1.4 1.4c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l14-14c.3-.4.3-.8 0-1.1zM3.8 12.1v-.2c2-3.6 5.3-6.1 8.2-6.1 1.3 0 2.6.5 3.9 1.3l-1.7 1.7c-1.5-1-3.6-.9-4.9.5-.8.7-1.2 1.7-1.2 2.7 0 .8.2 1.5.7 2.2L6.9 16c-1.2-1-2.3-2.4-3.1-3.9zm6.1 1c-.2-.3-.3-.7-.3-1.1 0-.6.2-1.2.7-1.7.7-.7 1.9-.9 2.8-.4z"></path></svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         <!--type="submit"-->
+                        <div class="d-flex align-items-center flex-sm-row flex-column-reverse mt-4">
+                          <button type="button" :disabled="disabled" :class="pwd2=='' ?'mt-4 mt-sm-0 mr-0 mr-sm-4 btn btn-primary btn-md disabled':'mt-4 mt-sm-0 mr-0 mr-sm-4 btn btn-primary btn-md '" @click="modify_pwd()">更改密码</button>
+                          <div class="d-inline-flex align-items-start">
+                            <span class="d-flex mr-2 mt-0_5 flex-shrink-0 text-gray-500">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8 14A6 6 0 108 2a6 6 0 000 12zm8-6A8 8 0 110 8a8 8 0 0116 0zm-9 3a1 1 0 112 0 1 1 0 01-2 0zm1-2a1 1 0 001-1V5a1 1 0 00-2 0v3a1 1 0 001 1z" clip-rule="evenodd">
+                                </path>
+                              </svg>
+                            </span>
+                            <span class="text-gray-600 regular-20">更改密码将使您退出所有的活动会话。</span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="rounded p-sm-3 px-0 py-3 p-md-5 mb-4 container-fluid border">
+                      <h2 class="text-purple-500 mb-4 h2-responsive">活动的会话</h2>
+                      <div class="d-flex flex-column align-items-start">
+                        <div class="overflow-auto w-100">
+                          <div class="container GH4iu">
+                            <div class="row border-bottom label-sm font-weight-semibold text-gray-600">
+                              <p class="col-2 pl-0 mb-2">登录</p>
+                              <p class="col-3 mb-2">浏览器</p>
+                              <p class="col-2 mb-2">IP 地址</p>
+                              <p class="col-2 mb-2">位置</p>
+                              <p class="col-2 mb-2">当前</p>
+                            </div>
+                            <div class="row py-3 border-bottom align-items-center">
+                              <div class="col-2 pl-0 mb-0">
+                                <span id="sessionCreatedAt_26801514" class="MaSIn cursor-help"> {$user.login_time|trans_day}</span>
+                              </div>
+                              <p class="col-3 mb-0 d-flex align-items-center">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="text-gray-500 mr-2">
+                                  <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v8a2 2 0 002 2h5v2H5a1 1 0 100 2h6a1 1 0 100-2H9v-2h5a2 2 0 002-2V2a2 2 0 00-2-2H2zm0 2h12v8H2V2z" clip-rule="evenodd">
+                                  </path>
+                                </svg>{$user.browser}</p>
+                              <p class="col-2 mb-0 text-break">{$user.ip}</p>
+                              <p class="col-2 mb-0">{$user.city}</p>
+                              <div class="col-2 mb-0 text-green-500">
+                                <svg width="16" height="16" stroke="currentColor" viewBox="0 0 16 16" fill="none">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 8.586L6 12l8-8">
+                                  </path>
+                                </svg>
+                              </div>
+                              <div class="col-1 text-right text-gray-600">
+                                <button type="button" class="btn btn-unstyled btn-lg">
+                                  <svg width="16" height="16" stroke="currentColor" viewBox="0 0 16 16" fill="none" class="cursor-pointer">
+                                    <path stroke-linecap="round" stroke-width="2" d="M4 4l8 8m0-8l-8 8">
+                                    </path>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" class="text-blue-700 font-weight-semibold mt-3 btn btn-unstyled btn-lg" @click="clearSession('{$user.uid}')">结束当前会话以外的所有会话</button>
+                      </div>
+                    </div>
+                    <div class="rounded p-sm-3 px-0 py-3 p-md-5 mb-4 container-fluid border">
+                      <h2 class="text-purple-500 mb-4 h2-responsive">账号活动</h2>
+                      <div class="d-flex flex-column align-items-start">
+                        <div class="overflow-auto w-100">
+                          <div class="container GH4iu">
+                            <div class="row border-bottom label-sm font-weight-semibold text-gray-600">
+                              <p class="col-2 pl-0 mb-2">操作</p>
+                              <p class="col-3 mb-2">浏览器</p>
+                              <p class="col-2 mb-2">IP 地址</p>
+                              <p class="col-2 mb-2">位置</p>
+                              <p class="col-3 mb-2">登录</p>
+                            </div>
+                            {volist name="operation" id="data"}
+                            <div class="row py-3 border-bottom align-items-center">
+                              <p class="col-2 pl-0 mb-0">{$data.contents}</p>
+                              <div class="col-3 mb-0 d-flex align-items-center">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="text-gray-500 mr-2">
+                                  <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v8a2 2 0 002 2h5v2H5a1 1 0 100 2h6a1 1 0 100-2H9v-2h5a2 2 0 002-2V2a2 2 0 00-2-2H2zm0 2h12v8H2V2z" clip-rule="evenodd">
+                                  </path>
+                                </svg>
+                                <span>{$data.information}</span>
+                              </div>
+                              <p class="col-2 mb-0 text-break">{$data.ip}</p>
+                              <p class="col-2 mb-0">{$data.city}</p>
+                              <div class="col-3 mb-0">
+                                <span class="cursor-help MaSIn" id="signedIn_0">{$data.create_time|trans_day}</span>
+                              </div>
+                            </div>
+                           {/volist}
+                          </div>
+                        </div>
+                       <!-- <button type="button" class="text-blue-700 font-weight-semibold mt-3 btn btn-unstyled btn-lg">显示更多</button>-->
+                      </div>
+                    </div>
+                    <div class="rounded p-sm-3 px-0 py-3 p-md-5 mb-4 container-fluid border" style="display:none">
+                      <h2 class="text-purple-500 mb-4 h2-responsive">关闭账号</h2>
+                      <div class="bg-gray-200 px-3 py-2_5 d-flex align-items-center rounded">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="icon-32">
+                          <path fill="var(--icons-bg-fill, #ffffff)" d="M9.5 4.5l-5 5 6 3.5 2.5-2-3.5-6.5zm9.5 6l3.5-6 5 5L21 13l-2-2.5zm-9.5 17l-5-5L11 19l2 2-3.5 6.5zm18-5l-5 5L19 21l2-2 6.5 3.5z">
+                          </path>
+                          <path fill="var(--icons-primary, #0097db)" d="M10.366 4.242l-1.732 1 3.506 6.072 1.746-.975-3.52-6.097zm11.268 23.516l1.732-1-3.544-6.138-1.712 1.034 3.524 6.104zm1.732-22.516l-1.732-1L18.02 10.5l1.838.815 3.507-6.073zM8.634 26.758l1.732 1 3.613-6.258-1.818-.851-3.527 6.11zm-4.392-5.124l1 1.732 6.11-3.528-1.033-1.713-6.077 3.509zm23.516-11.268l-1-1.732-6.137 3.543 1 1.732 6.137-3.543zM5.242 8.634l-1 1.732 6.13 3.54.925-1.776-6.055-3.496zm21.516 14.732l1-1.732-6.127-3.538-.86 1.813 5.987 3.457z">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4zM2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16z" clip-rule="evenodd">
+                          </path>
+                          <path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M16 11a5 5 0 100 10 5 5 0 000-10zm-7 5a7 7 0 1114 0 7 7 0 01-14 0z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                        <span class="ml-3">关闭您的用户账号将删除您在Paxful上的所有信息，如您的历史交易、交易活动等。在提交关闭账号的请求后，您将通过电子邮件收到一个确认链接，调解人将会处理您的请求。</span>
+                      </div>
+                      <button type="button" class="mt-4 text-red-500 font-weight-semibold btn btn-unstyled btn-md">关闭账号</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <div id="firstTradeRewardModal"  v-if="modalDialog">
+        <div :tabindex="modalDialog ? -1 : 0" :style=" modalDialog ?'position: relative; z-index: 1050 display:block':'position: relative; z-index: 1050 display:none;'" ><div class="react-app"><div class="modal Modal-module_open__NkFeZ opened fade show" role="dialog" :tabindex="modalDialog ? -1 : 0"  :style="modalDialog?'display: block;':'display: none;'"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header modal-header__bg rounded"><div class="d-flex justify-content-between w-100 align-items-center rounded"><h5 class="mb-0">提升安全性</h5><button v-on:click="closeDialog" type="button" class="btn-square btn btn-transparent btn-md"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="d-block text-gray-500"><path d="M13.1 12l3.5-3.5c.3-.3.3-.8 0-1.1s-.8-.3-1.1 0L12 10.9 8.5 7.5c-.3-.3-.8-.3-1.1 0s-.3.8 0 1.1l3.5 3.5-3.5 3.5c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l3.5-3.5 3.5 3.5c.1.1.3.2.5.2s.4-.1.5-.2c.3-.3.3-.8 0-1.1z"></path></svg></button></div></div><div class="modal-body"><p>要为账号设置其他操作的双因素验证，请完成：</p><a href="/user/account/questions" class="border rounded p-2_5 d-flex justify-content-between align-items-center cursor-pointer jwnr7 btn btn-unstyled btn-lg"><div class="d-flex align-items-center"><svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="mr-2_5 reflect-element"><path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M13 5.985l8.519 1.496A3 3 0 0124 10.435v10.879a3 3 0 01-1.02 2.254l-8 7.025a3 3 0 01-3.96 0l-8-7.025A3 3 0 012 21.314V10.435a3 3 0 012.481-2.954L13 5.985zm0 2.03L4.827 9.451a1 1 0 00-.827.984v10.879a1 1 0 00.34.752l8 7.024a1 1 0 001.32 0l8-7.024a1 1 0 00.34-.752V10.435a1 1 0 00-.827-.984L13 8.015z" clip-rule="evenodd"></path><path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M13 9.983l4.54.83A3 3 0 0120 13.766v5.866a3 3 0 01-.975 2.214l-4 3.658a3 3 0 01-4.05 0l-4-3.658A3 3 0 016 19.63v-5.866a3 3 0 012.46-2.951l4.54-.83zm0 2.034l-4.18.764a1 1 0 00-.82.984v5.866a1 1 0 00.325.738l4 3.659a1 1 0 001.35 0l4-3.659a1 1 0 00.325-.738v-5.866a1 1 0 00-.82-.984L13 12.017z" clip-rule="evenodd"></path><path fill="var(--icons-secondary, #454c59)" fill-rule="evenodd" d="M13 16a1 1 0 100 2 1 1 0 000-2zm-3 1a3 3 0 116 0 3 3 0 01-6 0z" clip-rule="evenodd"></path><path fill="var(--icons-bg-fill, #ffffff)" d="M29 8a7 7 0 11-14 0 7 7 0 0114 0z"></path><path fill="var(--icons-primary, #0097db)" fill-rule="evenodd" d="M22 2a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1116 0 8 8 0 01-16 0z" clip-rule="evenodd"></path><path fill="var(--icons-primary, #0097db)" d="M21 5a1 1 0 112 0v3a1 1 0 11-2 0V5zm0 6a1 1 0 112 0 1 1 0 01-2 0z"></path></svg><div class="d-flex flex-column align-items-start"><h5 class="mb-0">设置安全问题</h5><span class="text-gray-600 label-sm mb-0">只需几分钟即可设置完成</span></div></div><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="reflect-element"><path fill-rule="evenodd" d="M4.294 13.292l5.292-5.293-5.292-5.293a1 1 0 111.414-1.414l6 6a.99.99 0 01.277.53L12 7.94v.118a.996.996 0 01-.291.648l-6 6a1 1 0 11-1.414-1.414z" clip-rule="evenodd"></path></svg></a></div></div></div></div><div class="modal-backdrop fade show"></div></div></div>
+    </div>
+      <div class="react-app">
+        <footer id="footer-new" class="footer border-top pt-5 pb-7">
+          <div class="container-fluid text-center text-md-left">
+            <div class="row mb-5 flex-md-wrap no-gutters">
+              <div class="d-flex align-items-center order-0 flex-shrink-0">
+                <svg enable-background="new 0 0 85 16" viewBox="0 0 85 16" xmlns="http://www.w3.org/2000/svg" class="footer__logoImg mr-4">
+                  <path fill="#333333" d="m32.1 1.2h-2.9l3.8 5.1 1.2-1.7c.4-.5.4-1.2 0-1.7l-.8-1.1c-.4-.4-.8-.6-1.3-.6" />
+                  <path fill="#333333" d="m36.5 11.2 1.6 2.2c.3.4.7.6 1.2.6h2.8l-4.3-6-1.2 1.3c-.5.6-.5 1.3-.1 1.9" />
+                  <path d="m43.3 0-14.9 16c-.2.2-.5 0-.3-.3l10.8-15.1c.2-.4.7-.6 1.1-.6z" fill="#00a7f6" />
+                  <path fill="#333333" d="m23 11.3h-6l-1.1 2.7h-3l5.7-12.8h2.9l5.7 12.8h-3.1zm-1-2.3-2-4.9-2 4.9z" />
+                  <path fill="#333333" d="m49.1 3.6v3.4h5.8v2.4h-5.8v4.6h-3v-12.8h9.6v2.4z" />
+                  <path fill="#333333" d="m59.8 8.4v-7.2h3v7.1c0 2.4 1.1 3.4 2.9 3.4s2.8-1 2.8-3.4v-7.1h3v7.2c0 3.8-2.2 5.9-5.8 5.9-3.8 0-5.9-2.1-5.9-5.9" />
+                  <path fill="#333333" d="m75.4 1.2h2.9v10.4h6.7v2.4h-9.6z" />
+                  <path fill="#333333" d="m11.1 5.9c0 2.9-2.1 4.6-5.6 4.6h-2.5v3.5h-3v-12.8h5.6c3.4 0 5.5 1.8 5.5 4.7m-3 0c0-1.4-.9-2.2-2.7-2.2h-2.4v4.5h2.4c1.8-.1 2.7-.9 2.7-2.3" />
+                </svg>
+              </div>
+              <div class="col-12 col-xs mt-5 mt-xs-0 flex-shrink-0 flex-grow-0 order-2 order-lg-3">
+                <div class="dropdown languageSwitcher  js-dropdownSwitcher">
+                  <button class="btn dropdown-toggle lang-zh_CN  js-dropdownSwitcher-toggle" aria-haspopup="true" aria-expanded="false">
+                    <svg viewBox="0 0 16 16" width="16" height="16" class="icon globe mr-2_5" fill="currentColor">
+                      <use xlink:href="#icon-globe" href="#icon-globe">
+                      </use>
+                    </svg>简体中文 (zh-CN)
+                    <svg viewBox="0 0 16 16" width="16" height="16" class="icon arrowIcon ml-auto ml-xs-2_5" fill="currentColor">
+                      <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu list-unstyled mb-0 dropdown-menu-right p-1 columns columns-2">
+                    <li>
+                      <a href="https://paxful.com/zh" hreflang="zh-CN" class="footerLinkChangeLanguage dropdown-item notranslate current">简体中文(SC)</a>
+                    </li>
+                    <li>
+                      <a href="https://paxful.com/zh-tw" hreflang="zh-TW" class="footerLinkChangeLanguage dropdown-item notranslate">繁體中文(TC)</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-12 col-lg d-flex flex-column flex-md-row order-3 order-lg-1 mr-lg-4 mt-3 mt-lg-0">
+                <a target="_blank" id="footerLinkFAQ" href="https://paxful.com/support/zh-cn" class="d-block btn mr-md-3 mb-3 mb-md-0">
+                  <span class="d-flex align-items-center justify-content-start text-nowrap">
+                    <svg viewBox="0 0 16 16" width="16" height="16" class="icon mr-2 reflect-element" fill="currentColor">
+                      <use xlink:href="#icon-help" href="#icon-help">
+                      </use>
+                    </svg>常见问题与帮助中心</span>
+                </a>
+              </div>
+            </div>
+            <div class="footer__menu-container text-left mb-5">
+              <div class="d-md-flex justify-content-between flex-wrap">
+                <div class="col-md-4 p-0 d-lg-flex">
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">面向个人用户
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled p-0 mb-0 mt-3 mt-md-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/buy-tether" id="footerLinkBuyTether" class="text-decoration-none ">购买泰达币</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/sell-tether" id="footerLinkSellTether" class="text-decoration-none ">出售泰达币</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="/index/vendors" id="footerLinkBecomeVendor" class="text-decoration-none ">成为卖家</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">面向企业用户
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled p-0 mb-0 mt-3 mt-md-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/paxful-pay" id="footerLinkPayWithPaxful" class="text-decoration-none ">Paxful Pay</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/buy-bitcoin-kiosk" id="footerLinkBuyBitcoinKiosk" class="text-decoration-none ">虚拟比特币Kiosk</a>
+                        </li>
+                        <li class="mb-0">
+                          <a href="https://developers.paxful.com" id="footerLinkApiDocs" class="text-decoration-none ">API文档</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                <div class="col-md-4 p-0 d-lg-flex">
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">面向社区
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled p-0 mb-0 mt-3 mt-md-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/peer-program" id="footerLinkPaxfulPeerProgram" class="text-decoration-none ">Paxful伙伴召集令</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/bitcoin-affiliate-program" id="footerLinkAffiliateProgram" class="text-decoration-none ">Paxful联盟计划</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/alliance" id="footerLinkPaxfulAlliance" class="text-decoration-none ">Paxful 同盟</a>
+                        </li>
+                        <li class="mb-0">
+                          <a href="https://paxful.com/zh/community" id="footerLinkCommunityPage" class="text-decoration-none ">社区</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">全球购买
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled mb-0 mt-3 mt-md-0 p-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/buy/bitcoin/usa" id="footerLinkBuyBitcoinsInUsa" class="text-decoration-none ">在美国购买比特币</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="/zh/buy-sell-bitcoin-nigeria" id="footerLinkBuyBitcoinsInNigeria" class="text-decoration-none ">在尼日利亚购买比特币</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="/zh/buy-sell-bitcoin-china" id="footerLinkBuyBitcoinsInChina" class="text-decoration-none ">在中国购买比特币</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/buy/bitcoin/india" id="footerLinkBuyBitcoinsInIndia" class="text-decoration-none ">在印度购买比特币</a>
+                        </li>
+                        <li class="mb-0">
+                          <a href="https://paxful.com/zh/buy/bitcoin/russia" id="footerLinkBuyBitcoinsInRussia" class="text-decoration-none ">在俄罗斯购买比特币</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                <div class="col-md-4 p-0 d-lg-flex">
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">实用链接
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled p-0 mb-0 mt-3 mt-md-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/telegram-trade-bot" id="footerLinkTradeBot" class="text-decoration-none ">Telegram Trade 机器人</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://status.paxful.com" id="footerLinkPaxfulStatus" target="_blank" class="text-decoration-none ">Paxful 状态</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/calculator" id="footerLinkCalculator" class="text-decoration-none ">比特币计算器</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/bitcoin-price" id="footerLinkPeerToPeerMarketPrices" class="text-decoration-none ">点对点市价</a>
+                        </li>
+                        <li class="mb-0">
+                          <a href="https://paxful.com/atm" id="footerLinkBitcoinAtmMap" class="text-decoration-none ">比特币 ATM 地图</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="col-lg-6 p-0 mb-4 pr-md-4">
+                    <p class="label-large d-flex align-items-center justify-content-between font-weight-bold js-footer-menu-title mb-0 mb-md-2_5 ">关于Paxful
+                      <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                        <use xlink:href="#icon-arrow-down" href="#icon-arrow-down"></use>
+                      </svg>
+                    </p>
+                    <nav class="regular-20">
+                      <ul class="list-unstyled p-0 mb-0 mt-3 mt-md-0">
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/about" id="footerLinkAboutUs" class="text-decoration-none ">关于我们</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/about?#contacts" id="footerLinkBusinessContacts" class="text-decoration-none ">商务联络</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/zh/careers" id="footerLinkCareers" target="_blank" class="text-decoration-none ">招贤纳士</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="https://paxful.com/blog" id="footerLinkPaxfulBlog" target="_blank" class="text-decoration-none ">Paxful博客</a>
+                        </li>
+                        <li class="mb-3 mb-md-2 js-whats-new-content-cards-foot-wrapper d-none">
+                          <a href="#" class="text-decoration-none whats-new-content-cards">新消息</a>
+                        </li>
+                        <li class="mb-3 mb-md-2">
+                          <a href="/zh/review" id="footerLinkPaxfulReviews" class="text-decoration-none ">Paxful 评论</a>
+                        </li>
+                        <li class="mb-0">
+                          <a href="https://builtwithbitcoin.org" id="footerLinkBuiltWithBitcoin" class="text-decoration-none ">Built with Bitcoin</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                <div class="p-0 mt-md-2 w-100 d-md-flex">
+                  <div class="d-flex label-large font-weight-bold align-items-top justify-content-between js-footer-menu-title mb-md-2">
+                    <span>法律信息</span>
+                    <svg viewBox="0 0 16 16" class="icon icon-16 d-md-none" fill="currentColor">
+                      <use xlink:href="#icon-arrow-down" href="#icon-arrow-down">
+                      </use>
+                    </svg>
+                  </div>
+                  <nav class="d-md-flex position-relative">
+                    <ul class="regular-24 d-md-flex align-items-center flex-wrap list-unstyled mb-0 mt-3 mt-md-0 p-0 pl-md-2">
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/terms-of-service" id="footerLinkTermsAndConditions" class="text-decoration-none ">条款与条件</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/vendor-reminder" id="footerLinkVendorReminder" class="text-decoration-none ">卖家提示</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/aml-policy" id="footerLinkAMLPolicy" class="text-decoration-none ">AML（反洗钱）政策</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/stablecoin-terms-of-service" id="footerLinkStablecoinTermsOfService" class="text-decoration-none ">稳定币服务条款</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/paxful-earn-terms-of-service" id="footerLinkPaxfulEarnTermsOfService" class="text-decoration-none ">Paxful收益服务条款</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/privacy-notice" id="footerLinkPrivacyPolicy" class="text-decoration-none ">隐私政策</a>
+                      </li>
+                      <li class="mb-3 mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/bug-bounty-policy" id="footerLinkBugBountyPolicy" class="text-decoration-none ">Bug Bounty Policy（有奖捉虫方案）</a>
+                      </li>
+                      <li class="mb-md-2 ml-md-3">
+                        <a href="https://paxful.com/zh/cookie-policy" id="footerLinkCookiePolicy" class="text-decoration-none ">Cookie政策</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="d-sm-flex justify-content-between align-items-center mb-5">
+                <nav class="d-flex justify-content-center mb-5 mb-sm-0 dark-theme-icon-disable">
+                  <a class="app-icons__store-icon mr-3" id="footerLinkAppleStoreApp" href="https://apps.apple.com/hk/app/paxful-bitcoin-wallet/id1443813253" target="_blank">
+                    <svg enable-background="new 0 0 106.8 38" viewBox="0 0 106.8 38" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m40.2 15.6h-4.1l-1 2.9h-1.7l3.8-10.6h1.8l3.8 10.6h-1.7zm-3.7-1.4h3.2l-1.6-4.7z" />
+                      <path d="m51.2 14.6c0 2.4-1.3 4-3.2 4-1 .1-2-.5-2.4-1.4v3.8h-1.6v-10.3h1.5v1.3c.5-.9 1.5-1.4 2.5-1.4 1.9 0 3.2 1.6 3.2 4zm-1.7 0c0-1.6-.8-2.6-2-2.6s-2 1.1-2 2.6c0 1.6.8 2.6 2 2.6s2-1.1 2-2.6z" />
+                      <path d="m59.7 14.6c0 2.4-1.3 4-3.2 4-1 .1-2-.5-2.4-1.4v3.8h-1.6v-10.3h1.5v1.3c.5-.9 1.5-1.4 2.5-1.4 1.9 0 3.2 1.6 3.2 4zm-1.6 0c0-1.6-.8-2.6-2-2.6s-2 1.1-2 2.6c0 1.6.8 2.6 2 2.6s2-1.1 2-2.6z" />
+                      <path d="m65.3 15.5c.1 1.1 1.1 1.7 2.5 1.7 1.3 0 2.3-.7 2.3-1.6 0-.8-.6-1.3-2-1.7l-1.4-.3c-2-.5-2.9-1.4-2.9-2.9 0-1.8 1.6-3.1 3.9-3.1 2.2 0 3.8 1.3 3.8 3.1h-1.6c.1-1-.8-1.7-2.1-1.7s-2.2.6-2.2 1.6c0 .8.6 1.2 1.9 1.5l1.2.3c2.2.5 3.1 1.4 3.1 2.9 0 2-1.6 3.2-4.1 3.2-2.4 0-3.9-1.2-4.1-3.1z" />
+                      <path d="m75.3 8.8v1.8h1.5v1.3h-1.5v4.3c0 .7.3 1 .9 1h.5v1.3c-.3.1-.6.1-.9.1-1.6 0-2.2-.6-2.2-2.1v-4.4h-1.1v-1.3h1.1v-2z" />
+                      <path d="m77.6 14.6c0-2.4 1.4-4 3.7-4 2.2 0 3.7 1.5 3.7 4 0 2.4-1.4 4-3.7 4-2.3-.1-3.7-1.6-3.7-4zm5.8 0c0-1.7-.8-2.7-2.1-2.7s-2.1 1-2.1 2.7.8 2.7 2.1 2.7 2.1-1.1 2.1-2.7z" />
+                      <path d="m86.3 10.7h1.5v1.3c.2-.8 1-1.4 1.9-1.4.2 0 .4 0 .5.1v1.5c-.2-.1-.4-.2-.7-.2-.9 0-1.6.7-1.7 1.5v.2 4.6h-1.6v-7.6z" />
+                      <path d="m97.6 16.2c-.4 1.5-1.8 2.5-3.3 2.4-2.3 0-3.7-1.5-3.7-3.9s1.4-4 3.6-4c2.1 0 3.5 1.5 3.5 3.8v.5h-5.5c-.1 1.1.7 2.1 1.8 2.2h.3c.8.1 1.5-.4 1.8-1.1zm-5.4-2.4h3.9c.1-1-.7-1.9-1.8-2h-.1c-1.1.1-2 .9-2 2z" />
+                      <path d="m33.4 23h7.5v.8h-3.5v1.1c.5.2 1 .5 1.5.8s1 .6 1.6.9l-.5.7c-.5-.3-1-.7-1.5-.9-.4-.3-.8-.5-1.2-.7v4.6h-.8v-6.5h-3.1z" />
+                      <path d="m43 23.3h1.6v-.6h.8v.6h1.4v.7h-1.4v.6h1.8c0-.3 0-.6 0-.9s0-.7 0-1h.8v1 .9h2v.7h-2c0 .3.1.6.1.9s.1.5.1.7c0 .1 0 .1.1.2v.2c.1-.3.2-.6.3-.9s.2-.6.3-1l.7.3c-.2.9-.5 1.8-1 2.6 0 .1.1.1.1.2s.1.1.1.2c.2.4.3.6.5.6.1 0 .2-.4.3-1.2l.7.4c-.2 1.1-.5 1.7-.9 1.7-.3 0-.6-.3-1-.8-.1-.1-.1-.2-.2-.4-.4.5-.9.9-1.4 1.2l-.4-.6c.6-.3 1.1-.8 1.5-1.4-.1-.2-.1-.4-.2-.6s-.1-.4-.1-.6c-.1-.6-.2-1.2-.3-1.9h-4.6v-.7h2v-.4h-1.7zm3.7 5.3v.7c-.2 0-.4 0-.6.1-.2 0-.4 0-.6.1v1h-.8v-.9c-.3 0-.6 0-.9.1-.3 0-.6 0-.9.1l-.1-.7c.3 0 .7 0 1-.1.3 0 .6 0 .9-.1v-.6h-1.5l-.2-.8c.2-.3.4-.6.6-.9h-.8v-.7h1.1c0-.1.1-.2.1-.3s.1-.2.1-.3l.8.1c0 .1-.1.2-.1.2 0 .1 0 .1-.1.2h2.1v.7h-2.4c-.1.2-.2.3-.3.5s-.2.3-.2.4h.8v-.4h.8v.6h1.2v.6h-1.2v.5c.2 0 .4 0 .6-.1zm1.4-5.5.6-.4c.4.4.7.8 1 1.2l-.6.4c-.1-.2-.3-.4-.4-.6-.2-.1-.4-.4-.6-.6z" />
+                      <path d="m23.8 19.3c0-1.7.9-3.3 2.4-4.2-.9-1.3-2.4-2.1-4-2.2-1.7-.2-3.3 1-4.2 1s-2.2-1-3.6-1c-1.9.1-3.6 1.1-4.5 2.7-1.9 3.3-.5 8.3 1.4 11 .9 1.3 2 2.8 3.4 2.8 1.4-.1 1.9-.9 3.6-.9s2.1.9 3.6.9 2.4-1.3 3.3-2.7c.7-.9 1.2-2 1.5-3.1-1.8-.6-2.9-2.4-2.9-4.3z" />
+                      <path d="m21 11.2c.8-1 1.2-2.2 1.1-3.5-1.2.1-2.4.7-3.2 1.7-.8.9-1.2 2.1-1.1 3.4 1.3 0 2.4-.6 3.2-1.6z" />
+                    </svg>
+                  </a>
+                  <a class="app-icons__store-icon" id="footerLinkAndroidApp" href="https://play.google.com/store/apps/details?id=com.paxful.wallet&amp;hl=zh" target="_blank">
+                    <svg enable-background="new 0 0 133.4 40" viewBox="0 0 133.4 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <linearGradient id="googlePlayIconIdA" gradientTransform="matrix(1 0 0 -1 0 181.9998)" gradientUnits="userSpaceOnUse" x1="20.9997" x2="4.2173" y1="173.2902" y2="156.5078">
+                        <stop offset="0" stop-color="#00a0ff" />
+                        <stop offset=".00657445" stop-color="#00a1ff" />
+                        <stop offset=".2601" stop-color="#00beff" />
+                        <stop offset=".5122" stop-color="#00d2ff" />
+                        <stop offset=".7604" stop-color="#00dfff" />
+                        <stop offset="1" stop-color="#00e3ff" />
+                      </linearGradient>
+                      <linearGradient id="googlePlayIconIdB" gradientTransform="matrix(1 0 0 -1 0 181.9998)" gradientUnits="userSpaceOnUse" x1="33.0344" x2="8.8375" y1="161.9984" y2="161.9984">
+                        <stop offset="0" stop-color="#ffe000" />
+                        <stop offset=".4087" stop-color="#ffbd00" />
+                        <stop offset=".7754" stop-color="#ffa500" />
+                        <stop offset="1" stop-color="#ff9c00" />
+                      </linearGradient>
+                      <linearGradient id="googlePlayIconIdC" gradientTransform="matrix(1 0 0 -1 0 181.9998)" gradientUnits="userSpaceOnUse" x1="24.027" x2="1.2687" y1="159.7038" y2="136.9455">
+                        <stop offset="0" stop-color="#ff3a44" />
+                        <stop offset="1" stop-color="#googlePlayIconIdC31162" />
+                      </linearGradient>
+                      <linearGradient id="googlePlayIconIdD" gradientTransform="matrix(1 0 0 -1 0 181.9998)" gradientUnits="userSpaceOnUse" x1="6.4973" x2="16.6599" y1="181.8237" y2="171.6612">
+                        <stop offset="0" stop-color="#32a071" />
+                        <stop offset=".0685" stop-color="#2da771" />
+                        <stop offset=".4762" stop-color="#15cf74" />
+                        <stop offset=".8009" stop-color="#06e775" />
+                        <stop offset="1" stop-color="#00f076" />
+                      </linearGradient>
+                      <path d="m67.3 21.8c-2.4 0-4.3 1.8-4.3 4.3 0 2.4 1.9 4.3 4.3 4.3s4.3-1.8 4.3-4.3c0-2.6-1.9-4.3-4.3-4.3zm0 6.8c-1.3 0-2.4-1.1-2.4-2.6s1.1-2.6 2.4-2.6 2.4 1 2.4 2.6c0 1.5-1.1 2.6-2.4 2.6zm-9.3-6.8c-2.4 0-4.3 1.8-4.3 4.3 0 2.4 1.9 4.3 4.3 4.3s4.3-1.8 4.3-4.3c0-2.6-1.9-4.3-4.3-4.3zm0 6.8c-1.3 0-2.4-1.1-2.4-2.6s1.1-2.6 2.4-2.6 2.4 1 2.4 2.6c0 1.5-1.1 2.6-2.4 2.6zm-11.1-5.5v1.8h4.3c-.1 1-.5 1.8-1 2.3-.6.6-1.6 1.3-3.3 1.3-2.7 0-4.7-2.1-4.7-4.8s2.1-4.8 4.7-4.8c1.4 0 2.5.6 3.3 1.3l1.3-1.3c-1.1-1-2.5-1.8-4.5-1.8-3.6 0-6.7 3-6.7 6.6s3.1 6.6 6.7 6.6c2 0 3.4-.6 4.6-1.9 1.2-1.2 1.6-2.9 1.6-4.2 0-.4 0-.8-.1-1.1zm45.4 1.4c-.4-1-1.4-2.7-3.6-2.7s-4 1.7-4 4.3c0 2.4 1.8 4.3 4.2 4.3 1.9 0 3.1-1.2 3.5-1.9l-1.4-1c-.5.7-1.1 1.2-2.1 1.2s-1.6-.4-2.1-1.3l5.7-2.4zm-5.8 1.4c0-1.6 1.3-2.5 2.2-2.5.7 0 1.4.4 1.6.9zm-4.7 4.1h1.9v-12.5h-1.9zm-3-7.3c-.5-.5-1.3-1-2.3-1-2.1 0-4.1 1.9-4.1 4.3s1.9 4.2 4.1 4.2c1 0 1.8-.5 2.2-1h.1v.6c0 1.6-.9 2.5-2.3 2.5-1.1 0-1.9-.8-2.1-1.5l-1.6.7c.5 1.1 1.7 2.5 3.8 2.5 2.2 0 4-1.3 4-4.4v-7.6h-1.8zm-2.2 5.9c-1.3 0-2.4-1.1-2.4-2.6s1.1-2.6 2.4-2.6 2.3 1.1 2.3 2.6-1 2.6-2.3 2.6zm24.4-11.1h-4.5v12.5h1.9v-4.7h2.6c2.1 0 4.1-1.5 4.1-3.9s-2-3.9-4.1-3.9zm.1 6h-2.7v-4.3h2.7c1.4 0 2.2 1.2 2.2 2.1-.1 1.1-.9 2.2-2.2 2.2zm11.5-1.8c-1.4 0-2.8.6-3.3 1.9l1.7.7c.4-.7 1-.9 1.7-.9 1 0 1.9.6 2 1.6v.1c-.3-.2-1.1-.5-1.9-.5-1.8 0-3.6 1-3.6 2.8 0 1.7 1.5 2.8 3.1 2.8 1.3 0 1.9-.6 2.4-1.2h.1v1h1.8v-4.8c-.2-2.2-1.9-3.5-4-3.5zm-.2 6.9c-.6 0-1.5-.3-1.5-1.1 0-1 1.1-1.3 2-1.3.8 0 1.2.2 1.7.4-.2 1.2-1.2 2-2.2 2zm10.5-6.6-2.1 5.4h-.1l-2.2-5.4h-2l3.3 7.6-1.9 4.2h1.9l5.2-11.8zm-16.8 8h1.9v-12.5h-1.9z" />
+                      <path d="m9.6 7.5c-.3.3-.4.8-.4 1.4v22.1c0 .6.2 1.1.5 1.4l.1.1 12.4-12.4v-.1-.1z" fill="url(#googlePlayIconIdA)" />
+                      <path d="m26.2 24.3-4.1-4.1v-.2-.1l4.1-4.1.1.1 4.9 2.8c1.4.8 1.4 2.1 0 2.9z" fill="url(#googlePlayIconIdB)" />
+                      <path d="m26.3 24.2-4.2-4.2-12.5 12.5c.5.5 1.2.5 2.1.1z" fill="url(#googlePlayIconIdC)" />
+                      <path d="m26.3 15.8-14.6-8.3c-.8-.5-1.6-.4-2.1 0l12.5 12.5z" fill="url(#googlePlayIconIdD)" />
+                      <path d="m26.2 24.1-14.5 8.2c-.8.5-1.5.4-2 0l-.1.1.1.1c.5.4 1.2.5 2 0z" opacity=".2" />
+                      <path d="m9.6 32.3c-.3-.3-.5-.8-.5-1.4v.1c0 .6.2 1.1.5 1.4z" opacity=".12" />
+                      <path d="m31.2 21.3-5 2.8.1.1 4.9-2.8c.7-.4 1-.9 1-1.4 0 .5-.4.9-1 1.3z" opacity=".12" />
+                      <path d="m11.7 7.6 19.5 11.1c.6.4 1 .8 1 1.3 0-.5-.3-1-1-1.4l-19.5-11.1c-1.4-.8-2.5-.1-2.5 1.5v.1c0-1.6 1.1-2.3 2.5-1.5z" opacity=".25" />
+                      <path d="m43.9 7.6v1.3l.1-.2c.9.4 2 1.1 2.6 1.5l-.4.5c-.5-.4-1.5-1-2.3-1.5v3.8h-.6v-5.4h-2.8v-.6h6.5v.5h-3.1z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m54 9.1c-.3.9-.6 1.8-1.1 2.5.2.6.5 1 .8 1 .2 0 .3-.3.3-1.2.1.1.3.2.4.3-.1 1.1-.3 1.4-.8 1.4s-.8-.4-1.1-1c-.3.4-.7.8-1.1 1.1-.1-.1-.2-.3-.4-.4.5-.3.9-.8 1.2-1.3-.2-.8-.4-1.8-.4-3h-4.1v-.4h1.8v-.6h-1.4v-.4h1.4v-.6h.5v.6h1.3v.4h-1.3v.6h1.8c0-.5 0-1.1 0-1.6h.5v1.6h1.9v.4h-1.9c.1.9.2 1.7.3 2.3.3-.6.6-1.3.8-2zm-2.3 2.9c-.4.1-.9.1-1.3.1v1h-.5v-.9c-.7.1-1.4.1-1.9.2l-.1-.5c.5 0 1.2-.1 1.9-.2v-.7h-.9c-.3 0-.5 0-.6.1 0-.1-.1-.4-.2-.5.1 0 .2-.2.3-.4.1-.1.2-.3.3-.5h-.8v-.4h1c.1-.2.2-.5.3-.7l.5.1c-.1.2-.2.4-.2.6h2.1v.4h-2.4c-.2.3-.3.6-.5.8h1v-.5h.5v.6h1.2v.4h-1.2v.7c.4 0 .9-.1 1.3-.1v.4zm1.9-4.2c-.2-.3-.6-.7-.9-1l.4-.2c.3.3.7.6.9.9z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m56.3 7.9v1.5c0 1.1-.1 2.7-.7 3.8-.1-.1-.3-.2-.5-.3.6-1 .6-2.5.6-3.5v-2h2.9c-.1-.3-.2-.6-.4-.9l.5-.1c.2.3.4.7.5 1h2.4v.5zm5.5 4.4v.5h-5.4v-.5h2.9c.7-1.1 1.3-2.6 1.5-3.9l.6.2c-.4 1.2-.9 2.5-1.6 3.6h2zm-4.2-.8c-.1-.7-.5-1.7-.8-2.5l.5-.2c.3.8.7 1.8.8 2.5zm1.4-.4c-.1-.7-.4-1.7-.6-2.5l.5-.1c.2.8.5 1.8.6 2.5z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m68.9 12.4c0 .4-.1.5-.3.6s-.7.1-1.4.1c0-.1-.1-.4-.2-.5h1.1c.1 0 .2-.1.2-.2v-1.5h-2v2.2h-.5v-2.2h-1.8c-.1.8-.4 1.6-.9 2.3-.1-.1-.3-.3-.4-.4.8-.9.9-2.2.9-3.2v-2.6h5.3zm-3-2v-1.2h-1.7v.4.8zm-1.8-2.9v1.2h1.7v-1.2zm4.3 0h-2v1.2h2zm0 2.9v-1.2h-2v1.2z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m70.4 13c.6-.2.9-.6.9-1.1h-.1c-.3 0-.5-.2-.5-.5s.3-.5.6-.5c.4 0 .6.3.6.8 0 .8-.5 1.4-1.3 1.7z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m77.2 11.3c0 .1.1.4.2.5-1.2.9-1.4 1.1-1.5 1.2-.1-.1-.2-.4-.3-.5.1-.1.3-.3.3-.6v-2.6h-1.1v-.5h1.6v3.1zm-.8-3.2c-.2-.3-.7-.8-1.1-1.1l.3-.3c.4.3.9.8 1.1 1.1zm5.1.7v.4h-4.4v-.4h1.9v-.5h-1.5v-.4h1.5v-.4h-1.7v-.4h1.7v-.6h.5v.6h1.8v.4h-1.8v.5h1.5v.4h-1.5v.5h2zm-.6 3.7c0 .3-.1.4-.3.5s-.5.1-1.1.1c0-.1-.1-.3-.2-.5h.8c.1 0 .1 0 .1-.1v-.5h-2.3v1.1h-.5v-3.4h3.3v2.8zm-2.8-2.4v.6h2.3v-.6zm2.3 1.5v-.6h-2.3v.6z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                      <path d="m86.2 11.9v.5c-1.4.2-2.8.4-3.7.5l-.1-.5c.5-.1 1-.1 1.7-.2v-1.3h-1.4v-.5h1.4v-.9h.5v.9h1.4v.5h-1.4v1.2zm-1-4.1c.4.5.9 1.2 1.2 1.6l-.4.3c-.1-.1-.1-.3-.2-.5-1.1.1-2.3.1-3.2.2v-.5h.7c.2-.4.4-1 .5-1.5h-1.2v-.4h3.7v.5h-1.9c-.2.5-.4 1-.6 1.4.5 0 1.1 0 1.7-.1-.3-.3-.5-.5-.7-.8zm1.8 3.6h-.5v-4h.5zm1.7-4.7v5.7c0 .4-.1.5-.3.6s-.7.1-1.3.1c0-.1-.1-.4-.2-.6h1.1c.1 0 .2 0 .2-.2v-5.6z" stroke="#fff" stroke-miterlimit="10" stroke-width=".2" />
+                    </svg>
+                  </a>
+                </nav>
+                <nav class="footer__socials">
+                  <ul class="list-unstyled d-flex justify-content-center m-0 p-0">
+                    <li class="mr-3">
+                      <a id="footerLinkInstagram" class="btn btn-square d-flex justify-content-center align-items-center" href="https://www.instagram.com/paxful/" target="_blank">
+                        <svg viewBox="0 0 16 16" width="16" height="16" class="icon " fill="currentColor">
+                          <use xlink:href="#social-instagram" href="#social-instagram">
+                          </use>
+                        </svg>Instagram</a>
+                    </li>
+                    <li class="mr-3">
+                      <a id="footerLinkFacebook" class="btn btn-square d-flex justify-content-center align-items-center" href="https://www.facebook.com/paxful" target="_blank">
+                        <svg viewBox="0 0 16 16" width="16" height="16" class="icon " fill="currentColor">
+                          <use xlink:href="#social-facebook" href="#social-facebook">
+                          </use>
+                        </svg>Facebook</a>
+                    </li>
+                    <li class="mr-3">
+                      <a id="footerLinkTwitter" class="btn btn-square d-flex justify-content-center align-items-center" href="https://twitter.com/paxful" target="_blank">
+                        <svg viewBox="0 0 16 16" width="16" height="16" class="icon " fill="currentColor">
+                          <use xlink:href="#social-twitter" href="#social-twitter">
+                          </use>
+                        </svg>Twitter</a>
+                    </li>
+                    <li class="mr-3">
+                      <a id="footerLinkYouTube" class="btn btn-square d-flex justify-content-center align-items-center" href="https://www.youtube.com/PaxfulOfficial" target="_blank">
+                        <svg viewBox="0 0 16 16" width="16" height="16" class="icon " fill="currentColor">
+                          <use xlink:href="#social-youtube" href="#social-youtube">
+                          </use>
+                        </svg>YouTube</a>
+                    </li>
+                    <li>
+                      <a id="footerLinkReddit" class="btn btn-square d-flex justify-content-center align-items-center" href="https://www.reddit.com/r/paxful/" target="_blank">
+                        <svg viewBox="0 0 16 16" width="16" height="16" class="icon " fill="currentColor">
+                          <use xlink:href="#social-reddit" href="#social-reddit">
+                          </use>
+                        </svg>Reddit</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="d-md-flex">
+                <p class="regular-18 text-gray-700 text-left mb-0">“PAXFUL”是Paxful, Inc.的注册商标。版权&copy; 2021 Paxful, Inc.保留所有权利。Paxful与MoneyGram，Western Union，Payoneer，WorldRemit，Paxum，Paypal，Amazon，OkPay，Payza，Walmart，Reloadit，Perfect Money，WebMoney，Google Wallet，BlueBird，Serve，Square Cash，NetSpend，Chase QuickPay，Skrill，Vanilla，MyVanilla，OneVanilla，Neteller，Venmo，Apple，ChimpChange等任何支付方都无关。 Paxful未受这些公司的支持或支持这些公司。 以上公司的文字标记和商标也仅属于其公司。官方邮寄地址：3422 Old Capitol Trail, PMB 989, Wilmington DE 19808</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  
+    <div id="powerTradeBadgeReceivedModal">
+    </div>
+    <div id="powerTradeBadgeWithdrawnModal">
+    </div>
+    <div id="expertTraderBadgeReceivedModal">
+    </div>
+    <div id="checkEmailZendeskNotification">
+    </div>{include file="vue_js" /} {/block}</body>
+
+</html>

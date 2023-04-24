@@ -1,0 +1,150 @@
+{extend name="main" /}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-card">
+     
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> 添加</button>
+                <!--<button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="import"><i class="layui-icon">&#xe654;</i> 导入</button>-->
+            </div>
+
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="table-seller-admin">
+               
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).use([], function(){
+        var $ = layui.$;
+
+        var active = {
+
+            add: function() {
+                layer.open({
+                    type: 2
+                    ,title: '添加分佣'
+                    ,content: "{:url('commission/addcommission')}"
+                    ,area: ['70%', '90%']
+                });
+            },
+            import: function () {
+                layer.open({
+                    type: 2
+                    ,title: '导入分佣'
+                    ,content: "{:url('commission/import')}"
+                    ,area: ['60%', '60%']
+                });
+            }
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/commission/index",
+                cols: [
+                    [{
+                        field: "id",
+                        title: "id"
+                    }, {
+                        field: "pid",
+                        title: "用户id",
+                       
+                        
+                    }, {
+                        field: "reg_links",
+                        title: "推广链接",
+                       
+                        
+                    }, {
+                        field: "commission_rate",
+                        title: "佣金(%)",
+                        
+                    }, {
+                        field: "create_time",
+                        title: "生成时间",
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '无数据'
+                }
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("del" === e.event) {
+
+                        layer.confirm('确定要删除分佣记录？', {
+                            title: '友情提示',
+                            icon: 3,
+                            btn: ['确定', '取消']
+                        }, function(){
+
+                            $.getJSON("/admin/commission/delcommission/id/" + e.data.id, function (res) {
+                                if(0 == res.code) {
+                                    layer.msg(res.msg);
+                                    setTimeout(function () {
+                                        renderTable();
+                                    }, 300);
+                                } else {
+                                    layer.msg(res.msg);
+                                }
+                            });
+
+                        }, function(){
+
+                        });
+                    } else if ("edit" === e.event) {
+                        layer.open({
+                            type: 2
+                            ,title: '编辑分佣'
+                            ,content: "/admin/commission/editcommission/id/" + e.data.id
+                            ,area: ['70%', '90%']
+                        });
+                    }
+                });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+            });
+        });
+    }
+</script>
+{/block}

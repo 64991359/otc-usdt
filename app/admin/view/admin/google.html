@@ -1,0 +1,71 @@
+{extend name="main" /}
+
+{block name="css"}
+<style>
+    .red{color: red;}
+</style>
+{/block}
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+      
+             <form id="app-form" class="layui-form layuimini-form">
+              <div class="layui-form-item">
+                <label class="layui-form-label" style="width:200px">后台谷歌令牌登录验证</label>
+                <div class="layui-input-block">
+                    
+                    <input type="checkbox" name="google_key_status" lay-skin="switch" lay-filter="g_key" value="{$row.google_key_status}" lay-text="是|否" {if 1 == $row['google_key_status']}checked{/if} />
+                    
+                </div>
+            </div>
+            
+            <div class="layui-form-item keys" style="display:{if $row.google_key_status eq 1}block {else}none {/if}">
+                  <label class="layui-form-label">谷歌密钥key</label>
+                  <div class="layui-input-block">
+                 <input type="text" name="google_key" class="layui-input" readonly="true" placeholder="谷歌密钥" value="{$row.google_key|default=''}">
+                  </div>
+                 <br/>
+                <img  style="max-width: 200px; max-height: 200px;margin-left:30px" src="{$row.qrCodeUrl|default=''}" >
+                 </div>
+         
+             <div class="hr-line"></div>
+         
+           </form>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+      layui.use(['table','form','jquery'], function () {
+            var $ = layui.$;
+           //google begin
+         layui.form.on('switch(g_key)', function (obj) {
+           var google_key_status = this.checked ? '1' : '0';
+        
+           var id='{$row.id}';
+           
+        $.post('/admin/admin/google.html', {id: id, google_key_status: google_key_status}, function (data) {
+          
+            if (data.code==1) {
+                layer.msg(data.msg);
+                if(google_key_status==1){
+                    $('.keys').css('display','block'); 
+                }else{
+                     $('.keys').css('display','none');
+                }
+               
+            
+            } else {
+                layer.msg(data.msg);
+            }
+           });
+        });
+        //google end
+    });
+</script>
+
+{/block}

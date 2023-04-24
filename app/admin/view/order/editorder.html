@@ -1,0 +1,59 @@
+{extend name="iframe" /}
+
+{block name="body"}
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <form action="{:request()->url()}" method="post" class="xn_ajax" data-type="open">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="order_sn" lay-verify="required" placeholder="" Readonly="true" autocomplete="off" class="layui-input" value="{$order_data.order_sn}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卖家订单号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sell_order_number" lay-verify="required" placeholder="" Readonly="true" autocomplete="off" class="layui-input" value="{$order_data.sell_order_number}">
+            </div>
+        </div>
+      
+        <div class="layui-form-item">
+            <label class="layui-form-label">USDT数量</label>
+            <div class="layui-input-inline">
+                <input type="text" name="usdt_nums" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.usdt_nums}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总金额</label>
+            <div class="layui-input-inline">
+                <input type="text" name="amount" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.amount}">
+            </div>
+        </div>
+     
+        <div class="layui-form-item">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="create_time" placeholder="" autocomplete="off" class="layui-input" value="{$order_data.create_time}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+              
+                <input type="radio" name="status" value="0" title="匹配成功" {if condition="$order_data['status'] eq '匹配成功'"}checked{/if}>
+<input type="radio" name="status" value="1" title="买钱付款" {if condition="$order_data['status'] eq '买钱付款'"}checked{/if}>
+<input type="radio" name="status" value="2" title="订单完成" {if condition="$order_data['status'] eq '订单完成'"}checked{/if} >
+<input type="radio" name="status" value="3" title="取消订单" {if condition="$order_data['status'] eq '取消订单'"}checked{/if} >
+<input type="radio" name="status" value="4" title="订单过期" {if condition="$order_data['status'] eq '订单过期'"}checked{/if} >
+               
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" lay-submit class="layui-btn">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}

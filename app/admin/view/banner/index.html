@@ -1,0 +1,130 @@
+{extend name="main" /}
+
+{block name="css"}
+<style>
+    .red{color: red;}
+</style>
+{/block}
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">H5 <b>轮播设置</b> APP </div>
+                <div class="layui-card-body" pad15="">
+                
+                  
+                </div>
+            </div>
+
+            <div class="layui-card">
+                <div class="layui-card-header"></div>
+                <div class="layui-card-body">
+                    <form action="{:request()->url()}" method="post" class="xn_ajax">
+                         <div class="layui-form-item">
+                            <label class="layui-form-label">标题1</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="title1" placeholder="图片标题" autocomplete="off" class="layui-input" value="{$list.0.title|default=''}">
+                            </div>
+                        </div>
+                         <div class="layui-form-item">
+                            <label class="layui-form-label">链接1</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="links1" placeholder="例如 https://www.baidu.com" autocomplete="off" class="layui-input" value="{$list.0.url|default=''}">
+                            </div>
+                        </div>
+                         <div class="layui-form-item">
+                            <label class="layui-form-label">图片1</label>
+                            <div class="layui-input-block" style="width:30%">
+                                <input type="text" name="img_url1" placeholder="例如  /uploads/file/..." autocomplete="off" class="layui-input" value="{$list.0.img_url|default=''}">
+                            </div>
+                        </div> 
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    {:xn_upload_one($value,'banner1',0,'640,200')}
+                                </div>
+                            </div>
+                        </div>
+                     
+                     
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" >标题2</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="title2" placeholder="图片标题" autocomplete="off" class="layui-input" value="{$list.1.title|default=''}">
+                            </div>
+                        </div>
+                
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">链接2</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="links2" placeholder="例如 https://www.baidu.com" autocomplete="off" class="layui-input" value="{$list.1.url|default=''}">
+                            </div>
+                        </div>
+              
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图片2</label>
+                            <div class="layui-input-block" style="width:30%">
+                                <input type="text" name="img_url2" placeholder="例如  /uploads/file/..." autocomplete="off" class="layui-input" value="{$list.1.img_url|default=''}">
+                            </div>
+                        </div>  
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                    {:xn_upload_one($value,'banner2',0,'640,200')}
+                                </div>
+                           </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" >标题3</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="title3" placeholder="图片标题" autocomplete="off" class="layui-input" value="{$list.2.title|default=''}">
+                            </div>
+                        </div>
+                
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">链接3</label>
+                            <div class="layui-input-block" style="width:20%">
+                                <input type="text" name="links3" placeholder="例如 https://www.baidu.com" autocomplete="off" class="layui-input" value="{$list.2.url|default=''}">
+                            </div>
+                        </div>
+                
+                         <div class="layui-form-item">
+                              <label class="layui-form-label">图片3</label>
+                              <div class="layui-input-block" style="width:30%">
+                                   <input type="text" name="img_url3" placeholder="例如 /uploads/file/.." autocomplete="off" class="layui-input" value="{$list.2.img_url|default=''}">
+                              </div>
+                        </div>  
+                        <div class="layui-form" wid100="" lay-filter="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-block">
+                                     {:xn_upload_one($value,'banner3',0,'640,200')}
+                                </div>
+                         </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                               <button type="submit" class="layui-btn layui-bg-red">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+
+
+
+
+{/block}

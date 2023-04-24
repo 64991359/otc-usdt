@@ -1,0 +1,93 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+<div class="layui-fluid">
+    <table class="layui-table" style="margin-top: 0;">
+        <tr>
+            <th><b>ID</b></th>
+            <th><b>用户名</b></th>
+            <th><b>国家(初级)</b></th>
+            <th><b>姓名(初级)</b></th>
+            <th><b>身份证号码(初级)</b></th>
+            <th><b>正面照(高级)</b></th>
+            <th><b>反面照(高级)</b></th>
+            <th><b>初级认证</b></th>
+            <th><b>高级认证</b></th>
+            <!--<th><b>初级拒绝理由</b></th>-->
+            <!--<th><b>高级拒绝理由</b></th>-->
+            <th><b>申请时间</b></th>
+            <th><b>审核时间</b></th>
+            <th style="padding: 0 15px;line-height: 40px;"><b>操作</b>  </th>
+            <!--<span style="float: right"><a href="{:url('add')}" data-width="600px" data-height="450px" class="layui-btn layui-btn-sm xn_open" title="添加用户">添加认证</a></span>-->
+        </tr>
+
+        <tbody>
+        {foreach name="list" item="vo"}
+        <tr>
+            <td>{$vo.id|default=''}</td>
+            <td>{$vo.username|default=''}</td>
+            <td>{$vo.country|default=''}</td>
+            <td>{$vo.true_name|default=''}</td>
+            <td>{$vo.id_no|default=''}</td>
+            <td><a href="{$vo.img_first|default=''}" target="_blank">{$vo.img_first|default=''}</a></td>
+            <td><a href="{$vo.img_back|default=''}" target="_blank">{$vo.img_back|default=''}</a></td>
+            <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="renzheng1" name="renzheng1" data-id="{$vo.id}" data-uid="{$vo.uid}" 
+                       lay-skin="switch" lay-text="通过|拒绝" value="1" {if condition="$vo['renzheng1'] eq 1"}checked{/if} >
+            </td>
+            <td class="layui-form">
+                <input type="checkbox" lay-verify="required" lay-filter="renzheng2" name="renzheng2" data-id="{$vo.id}" data-uid="{$vo.uid}" 
+                       lay-skin="switch" lay-text="通过|拒绝" value="1" {if condition="$vo['renzheng2'] eq 1"}checked{/if} >
+            </td>
+            <!--<td>{$vo.reason1|default=''}</td>-->
+            <!--<td>{$vo.reason2|default=''}</td>-->
+            <td>{$vo.add_time|date='Y-m-d H:i'}</td>
+            <td>{$vo.shenhe_time|date='Y-m-d H:i'}</td>
+            <td>
+                <!--<a href="{:url('edit',array('id'=>$vo['id']))}" data-width="600px" data-height="450px" title="修改用户信息" class="layui-btn layui-btn-normal layui-btn-xs xn_open">-->
+                <!--    <i class="layui-icon layui-icon-edit"></i>修改-->
+                <!--</a>-->
+                {if condition="$vo['id'] neq 0"}
+                <a href="{:Url('sfzdelete',array('id'=>$vo['id']))}" title="确认要删除【{$vo.username}】吗？" class="layui-btn layui-btn-danger layui-btn-xs xn_delete">
+                    <i class="layui-icon layui-icon-delete"></i>删除
+                </a>
+                {/if}
+            </td>
+             
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+     <table class="layui-hide" id="test"></table>
+      <div class="pages">{$page|raw}</div>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+    layui.form.on('switch(renzheng1)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 2;
+        var id = $(this).attr('data-id');
+        var uid = $(this).attr('data-uid');
+        var url = "{:url('sfzedit')}";
+        $.post(url,{id:id,uid:uid,renzheng1:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+    });
+    layui.form.on('switch(renzheng2)', function(data){
+        //layer.tips('开关checked：'+ (this.checked ? 'true' : 'false'), data.othis)
+        var val = this.checked ? 1 : 2;
+        var id = $(this).attr('data-id');
+        var uid = $(this).attr('data-uid');
+        var url = "{:url('sfzedit')}";
+        $.post(url,{id:id,uid:uid,renzheng2:val},function (res) {
+            console.log(res);
+            layer.tips(res.msg, data.othis);
+        },'json')
+    });
+</script>
+
+{/block}

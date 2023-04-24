@@ -1,0 +1,199 @@
+{extend name="main" /}
+
+{block name="body"}
+{include file="breadcrumb" /}
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">网站设置</div>
+                <div class="layui-card-body" pad15="">
+                    
+                    
+
+<form id="app-form" class="layui-form layuimini-form">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">币种类型</label>
+        <div class="layui-input-block">
+          
+            <div class="layui-form" lay-filter="myla" style="width:100px">
+   <select name="" id="sel" lay-filter="mySelect" >
+       
+       
+      
+       <option value="0">ALL</option>
+      <option value="1">TRC20</option>
+      <option value="2">ERC20</option>
+      
+   </select>
+  
+</div>
+ <tip>TRC20或者ERC20或者ALL</tip>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+       
+        <div class="layui-input-block">
+            <input type="hidden" name="id" id="id" class="layui-input" lay-verify="required" placeholder="" value="{$data.id}">
+           
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">TRC20</label>
+        <div class="layui-input-block" style="width:500px">
+            <input type="text" name="trx_address" id="trx_address"  Readonly="true" class="layui-input" lay-verify="required" placeholder="" value="{$data.trx_address}">
+             <tip>波场usdt收款地址trc20</tip>
+        </div>
+    </div>
+  <div class="layui-form-item">
+        <label class="layui-form-label">ERC20</label>
+        <div class="layui-input-block" style="width:500px">
+            <input type="text" name="eth_address" id="eth_address" Readonly="true" class="layui-input" lay-verify="required" placeholder="" value="{$data.eth_address}">
+            <tip>以太坊usdt收款地址erc20</tip>
+        </div>
+    </div>
+  
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关</label>
+        <div class="layui-input-block  margin-top-20 block relative">
+            
+           <input type="hidden" name="status" value="{$data.status}">
+   <input type="checkbox"  name="status" lay-filter="switchTest" lay-skin="_switch" 
+   lay-text="开启|关闭" value="{$data.status}"  <?php if($data['status']) echo "checked";else echo ""; ?> >
+
+          
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">时间</label>
+        <div class="layui-input-block" style="width:150px">
+             <input class="layui-input"  name="times" id="test2" type="text" placeholder="yyyy" value="{$data.open_time}">
+            <tip>每天自动执行时间</tip>
+        </div>
+    </div>
+
+   
+
+    <div class="hr-line"></div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+        <button type="button" class="layui-btn layui-btn-normal layui-btn-sm"   id="suu">保存自动</button>
+     <button type="button" class="layui-btn layui-btn-danger layui-btn-sm" id="sdgj">手工开始</button>
+    </div>
+   
+ </div>
+</form>
+
+ </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    
+    layui.use(['table', 'form', 'laydate'], function(){
+   var $ = layui.$
+        , admin = layui.admin
+        , table = layui.table
+        , form = layui.form
+        , laydate = layui.laydate
+        ,swc,typess;
+        
+         form.render();
+         var _selectVal = '{$data.type}';
+          $("#sel").val(_selectVal);
+		  form.render('select','mySelect');
+	//监听开关事件
+   form.on('switch(switchTest)', function (data) {
+         //开关是否开启，true或者false
+            var checked = data.elem.checked;
+            swc=checked ? '1' : '0';
+            console.log(swc);
+            return false;
+
+    });
+  laydate.render({
+    elem: '#test2'
+    ,type: 'time'
+  });
+  form.render('select','myla');
+  layui.form.on('select(mySelect)', function (data) {
+   
+    typess=data.value;
+    console.log(typess);
+})
+
+
+ $("#sdgj").click(function(){
+   
+       $.post("{:url('guiji/config')}", {sg:'1'},
+                            function(data){
+                                console.log(data);
+                                if(data.code==1){
+                                    layer.msg(data.msg, {time: 1500}, function () {
+                                      window.location.reload();
+                                    });
+                                }else{
+                                    layer.msg(data.msg, {time: 1500, anim: 6});
+                                }
+                            }
+ 
+
+
+
+ 
+
+)
+ });
+    $("#suu").click(function(){
+        var type =  typess;
+        console.log(type);
+        var times = $('#test2').val();
+         var eth_address= $('#eth_address').val();
+         var trx_address= $('#trx_address').val();
+         var id = $('#id').val();
+        if(times<1){
+           layer.msg('时间不能为空', {time: 1500, anim: 6}); return false;
+        }
+         if(eth_address.length<1){
+           layer.msg('以太坊收款地址不能为空', {time: 1500, anim: 6}); return false;
+        }
+        
+        if(trx_address.length<1){
+           layer.msg('波场收款地不能为空', {time: 1500, anim: 6}); return false;
+        }
+        
+        $.post("{:url('guiji/config')}", {status: swc,type:type,open_time:times,trx_address:trx_address,eth_address:eth_address,id:id},
+                            function(data){
+                                console.log(data);
+                                if(data.code==1){
+                                    layer.msg(data.msg, {time: 1500}, function () {
+                                      window.location.reload();
+                                    });
+                                }else{
+                                    layer.msg(data.msg, {time: 1500, anim: 6});
+                                }
+                            }
+ 
+
+
+
+ 
+
+)
+    });
+
+  });
+  
+
+
+</script>
+
+{/block}

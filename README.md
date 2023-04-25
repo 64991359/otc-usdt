@@ -1,4 +1,4 @@
-# otc-usdt(可运营版)
+# otc-usdt交易所(可运营版)
 仿币汇（易币付）otc交易所
 基于php7.4+mysql5.7+uniapp
 # 特色功能
